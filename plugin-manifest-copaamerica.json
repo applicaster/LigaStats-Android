@@ -1,7 +1,7 @@
 {
   "api": {
     "require_startup_execution": false,
-    "class_name": "com.applicaster.opta.statsscreenplugin.OptaStatsContract"
+    "class_name": "com.applicaster.liga.statsscreenplugin.OptaStatsContract"
   },
   "dependency_repository_url": [],
   "platform": "android",

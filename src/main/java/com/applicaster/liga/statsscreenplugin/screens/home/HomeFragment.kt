@@ -14,7 +14,7 @@ import com.applicaster.liga.statsscreenplugin.data.model.AllMatchesModel
 import com.applicaster.liga.statsscreenplugin.data.model.GroupModel
 import com.applicaster.liga.statsscreenplugin.data.model.MatchModel
 import com.applicaster.liga.statsscreenplugin.screens.base.HeartbeatFragment
-import com.applicaster.liga.statsscreenplugin.screens.home.adapters.GroupAdapter
+import com.applicaster.liga.statsscreenplugin.screens.home.adapters.TeamAdapter
 import com.applicaster.liga.statsscreenplugin.screens.home.adapters.MatchAdapter
 import com.applicaster.liga.statsscreenplugin.screens.match.MatchInteractor
 import com.applicaster.liga.statsscreenplugin.screens.match.MatchPresenter
@@ -30,7 +30,7 @@ import kotlin.collections.ArrayList
  * To apply MVP architecture I used as reference this article
  * https://hackernoon.com/https-medium-com-rohitss-android-app-architectures-mvp-with-kotlin-f255b236010a
  */
-class HomeFragment : HeartbeatFragment(), HomeView, MatchView, GroupAdapter.OnTeamFlagClickListener,
+class HomeFragment : HeartbeatFragment(), HomeView, MatchView, TeamAdapter.OnTeamFlagClickListener,
         MatchAdapter.OnMatchClickListener {
 
     companion object {
@@ -90,7 +90,7 @@ class HomeFragment : HeartbeatFragment(), HomeView, MatchView, GroupAdapter.OnTe
     override fun getGroupsSuccess(groupCards: GroupModel.Group) {
         rv_group_cards.layoutManager = LinearLayoutManager(context)
         rv_group_cards.isNestedScrollingEnabled = false
-        rv_group_cards.adapter = GroupAdapter(ModelUtils.getDivisionWithTypeTotal(groupCards), context,
+        rv_group_cards.adapter = TeamAdapter(ModelUtils.getRakesWithTypeTotal(groupCards), context,
                 nsv_container, this)
     }
 

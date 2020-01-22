@@ -65,14 +65,14 @@ class ModelUtils {
 
         fun getDivisionWithTypeTotal(groups: GroupModel.Group): List<GroupModel.Division> {
             var divisions: ArrayList<GroupModel.Division> = ArrayList()
-
-            for (division in groups.stage[0].division) {
-                if (division.type == "total") {
-                    divisions.add(division)
-                }
-            }
-
+            groups.stage[0].division.firstOrNull { it.type == "total" }?.let { divisions.add(it) }
             return divisions
+        }
+
+        fun getRakesWithTypeTotal(groups: GroupModel.Group): List<GroupModel.Ranking> {
+            var result: List<GroupModel.Ranking> = mutableListOf()
+            groups.stage[0].division.firstOrNull { it.type == "total" }?.apply { result = ranking }
+            return result
         }
 
         fun getNextThreeMatches(matches: AllMatchesModel.AllMatches, date: String):
@@ -139,7 +139,11 @@ class ModelUtils {
 
         fun getImageResource(ivFlag: ImageView, id: String): Int {
             val context = ivFlag.context
-            return context.resources.getIdentifier(id.toLowerCase(), "drawable", context.packageName)
+            val idRes = context.resources.getIdentifier(id.toLowerCase(), "drawable", context.packageName)
+            return when (idRes) {
+                0 -> R.drawable.flag_ajab3nmpoltsoeqcuoyi4pwzx
+                else -> idRes
+            }
         }
 
         fun getCodeFromCountryName(contestantName: String): String? {

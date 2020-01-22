@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.item_all_matches.view.*
 import kotlinx.android.synthetic.main.item_match.view.*
 
 class MatchAdapter(private val items: List<Any>, private val context: Context?,
-                   listener: GroupAdapter.OnTeamFlagClickListener,
+                   listener: TeamAdapter.OnTeamFlagClickListener,
                    matchListener: OnMatchClickListener, var allMatchesView: Boolean) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
@@ -27,7 +27,7 @@ class MatchAdapter(private val items: List<Any>, private val context: Context?,
     }
 
     var onMatchClickListener: OnMatchClickListener = matchListener
-    var onTeamFlagClickListener: GroupAdapter.OnTeamFlagClickListener = listener
+    var onTeamFlagClickListener: TeamAdapter.OnTeamFlagClickListener = listener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when {
@@ -81,7 +81,7 @@ class MatchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     var tvPenaltiesHome = view.tv_penalties_home
     var tvPenaltiesAway = view.tv_penalties_away
 
-    fun bind(context: Context?, match: MatchModel.Match, onTeamFlagClickListener: GroupAdapter.OnTeamFlagClickListener,
+    fun bind(context: Context?, match: MatchModel.Match, onTeamFlagClickListener: TeamAdapter.OnTeamFlagClickListener,
              onMatchClickListener: MatchAdapter.OnMatchClickListener) {
         val matchInfo = match.matchInfo
         val contestants = matchInfo?.contestant

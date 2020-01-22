@@ -19,6 +19,15 @@
         <item name="android:textColor">@color/text_subtitle</item>
     </style>
 
+    <!-- used for team name -->
+    <style name="Theme.Opta.Team">
+        <item name="customtypeface">bebasneue-regular</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/text_subtitle</item>
+    </style>
+
     <!-- used for the name of the country -->
     <style name="Theme.Opta.Country">
         <item name="customtypeface">bebasneue-regular</item>

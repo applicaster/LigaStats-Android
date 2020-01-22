@@ -22,23 +22,29 @@ interface OptaApiService {
 
     @GET("standings/{token}")
     fun getGroupCards(@Path("token") token: String,
-                      @Header("Referer") referer: String, @Query("_rt") rt: String,
-                      @Query("_fmt") format: String, @Query("tmcl") tournamentId: String,
+                      @Header("Referer") referer: String,
+                      @Query("_rt") rt: String,
+                      @Query("_fmt") format: String,
+                      @Query("tmcl") tournamentId: String,
                       @Query("_lcl") localization: String):
             Observable<GroupModel.Group>
 
     @GET("matchstats/{token}")
     fun getMatches(@Path("token") token: String,
-                   @Header("Referer") referer: String, @Query("_rt") rt: String,
-                   @Query("_fmt") format: String, @Query("fx") fixtureId: String,
+                   @Header("Referer") referer: String,
+                   @Query("_rt") rt: String,
+                   @Query("_fmt") format: String,
+                   @Query("fx") fixtureId: String,
                    @Query("detailed") detailed: String,
                    @Query("_lcl") localization: String):
             Observable<MatchModel.Match>
 
     @GET("seasonstats/{token}")
     fun getTeamStats(@Path("token") token: String,
-                     @Header("Referer") referer: String, @Query("_rt") rt: String,
-                     @Query("_fmt") format: String, @Query("tmcl") tournamentId: String,
+                     @Header("Referer") referer: String,
+                     @Query("_rt") rt: String,
+                     @Query("_fmt") format: String,
+                     @Query("tmcl") tournamentId: String,
                      @Query("ctst") contestantId: String,
                      @Query("detailed") detailed: String,
                      @Query("_lcl") localization: String):
@@ -46,8 +52,10 @@ interface OptaApiService {
 
     @GET("squads/{token}")
     fun getSquads(@Path("token") token: String,
-                  @Header("Referer") referer: String, @Query("_rt") rt: String,
-                  @Query("_fmt") format: String, @Query("tmcl") tournamentId: String,
+                  @Header("Referer") referer: String,
+                  @Query("_rt") rt: String,
+                  @Query("_fmt") format: String,
+                  @Query("tmcl") tournamentId: String,
                   @Query("ctst") contestantId: String,
                   @Query("detailed") detailed: String,
                   @Query("_lcl") localization: String):
@@ -55,38 +63,50 @@ interface OptaApiService {
 
     @GET("playercareer/{token}")
     fun getPlayerCareer(@Path("token") token: String,
-                        @Header("Referer") referer: String, @Query("_rt") rt: String,
-                        @Query("_fmt") format: String, @Query("prsn") personId: String,
+                        @Header("Referer") referer: String,
+                        @Query("_rt") rt: String,
+                        @Query("_fmt") format: String,
+                        @Query("prsn") personId: String,
                         @Query("_lcl") localization: String):
             Observable<PlayerCareerModel.PlayerCareer>
 
     @GET("tournamentschedule/{token}")
     fun getAllMatches(@Path("token") token: String,
-                      @Header("Referer") referer: String, @Query("_rt") rt: String,
-                      @Query("_fmt") format: String, @Query("tmcl") tournamentId: String,
+                      @Header("Referer") referer: String,
+                      @Query("_rt") rt: String,
+                      @Query("_fmt") format: String,
+                      @Query("tmcl") tournamentId: String,
                       @Query("_lcl") localization: String):
             Observable<AllMatchesModel.AllMatches>
 
     @GET("match/{token}")
     fun getMatchDetails(@Path("token") token: String,
-                        @Header("Referer") referer: String, @Query("_rt") rt: String,
-                        @Query("_fmt") format: String, @Query("fx") fixtureId: String,
+                        @Header("Referer") referer: String,
+                        @Query("_rt") rt: String,
+                        @Query("_fmt") format: String,
+                        @Query("fx") fixtureId: String,
                         @Query("_lcl") localization: String):
             Observable<MatchDetailsModel.FullMatchDetails>
 
     @GET("trophies/{token}")
     fun getTrophies(@Path("token") token: String,
-                    @Header("Referer") referer: String, @Query("comp") competitionId: String,
-                    @Query("_fmt") format: String, @Query("_rt") fixtureId: String,
+                    @Header("Referer") referer: String,
+                    @Query("comp") competitionId: String,
+                    @Query("_fmt") format: String,
+                    @Query("_rt") fixtureId: String,
                     @Query("_lcl") localization: String):
             Observable<TrophiesModel.Trophies>
 
     @GET("match/{token}")
     fun getAllMatchesWithDetails(@Path("token") token: String,
-                                 @Header("Referer") referer: String, @Query("_rt") rt: String,
-                                 @Query("_fmt") format: String, @Query("tmcl") tournamentId: String,
-                                 @Query("live") live: String, @Query("_ordSrt") sort: String,
-                                 @Query("_pgNm") pageNumber: String, @Query("_pgSz") pageSize: String,
+                                 @Header("Referer") referer: String,
+                                 @Query("_rt") rt: String,
+                                 @Query("_fmt") format: String,
+                                 @Query("tmcl") tournamentId: String,
+                                 @Query("live") live: String,
+                                 @Query("_ordSrt") sort: String,
+                                 @Query("_pgNm") pageNumber: String,
+                                 @Query("_pgSz") pageSize: String,
                                  @Query("_lcl") localization: String):
             Observable<AllMatchesWithDetailsModel.AllMatchesWithDetails>
 

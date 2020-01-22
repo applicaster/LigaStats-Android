@@ -1,9 +1,9 @@
--keep public class com.applicaster.opta.statsscreenplugin.OptaStatsContract {
+-keep public class com.applicaster.liga.statsscreenplugin.OptaStatsContract {
    public <fields>;
    public <methods>;
 }
 
--keep public class com.applicaster.opta.statsscreenplugin.PluginConfigurationHandler {
+-keep public class com.applicaster.liga.statsscreenplugin.PluginConfigurationHandler {
    public <fields>;
    public <methods>;
 }
@@ -14,7 +14,7 @@
 -keep class com.squareup.retrofit2.** {*;}
 -keep interface com.squareup.retrofit2.** {*;}
 
--keep class com.applicaster.opta.statsscreenplugin.data.model.** {*;}
+-keep class com.applicaster.liga.statsscreenplugin.data.model.** {*;}
 
 -keep class com.ethanhua.skeleton.** {*;}
 -keep class io.supercharge.shimmerlayout.** {*;}

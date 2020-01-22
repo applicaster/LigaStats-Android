@@ -5,7 +5,8 @@
     <color name="details_text">#343434</color>
     <color name="gray">#808080</color>
     <color name="lower_gray">#C0C0C0</color>
-    <color name="text_title">#C1C1C1</color>
+    <color name="text_title">#C7C7C7</color>
+    <color name="text_team">#777777</color>
     <color name="player_text_title">#7a7a7a</color>
     <color name="text_subtitle">#686868</color>
     <color name="text_highlight_number">#C7C7C7</color>
@@ -15,4 +16,9 @@
     <color name="title_highlight">#F2C700</color>
     <color name="yellow">#F2C700</color>
     <color name="handsome_gray">#e6e6e6</color>
+
+    <color name="indicator_white">#ffffff</color>
+    <color name="indicator_green">#259034</color>
+    <color name="indicator_yellow">#ffab00</color>
+    <color name="indicator_red">#b50017</color>
 </resources>

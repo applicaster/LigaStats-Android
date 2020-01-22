@@ -11,13 +11,13 @@ import com.applicaster.liga.statsscreenplugin.OptaStatsActivity
 import com.applicaster.liga.statsscreenplugin.R
 import com.applicaster.liga.statsscreenplugin.data.model.AllMatchesModel
 import com.applicaster.liga.statsscreenplugin.data.model.MatchModel
-import com.applicaster.liga.statsscreenplugin.screens.home.adapters.GroupAdapter
+import com.applicaster.liga.statsscreenplugin.screens.home.adapters.TeamAdapter
 import com.applicaster.liga.statsscreenplugin.screens.home.adapters.MatchAdapter
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
 import com.applicaster.liga.statsscreenplugin.utils.PluginUtils
 import kotlinx.android.synthetic.main.fragment_all_matches.*
 
-class AllMatchesFragment : Fragment(), AllMatchesView, GroupAdapter.OnTeamFlagClickListener,
+class AllMatchesFragment : Fragment(), AllMatchesView, TeamAdapter.OnTeamFlagClickListener,
         MatchAdapter.OnMatchClickListener {
 
     var allMatchesPresenter: AllMatchesPresenter = AllMatchesPresenter(this,

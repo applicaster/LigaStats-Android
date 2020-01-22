@@ -16,7 +16,7 @@ import com.applicaster.liga.statsscreenplugin.plugin.PluginDataRepository
 import com.applicaster.liga.statsscreenplugin.screens.allmatches.AllMatchesInteractor
 import com.applicaster.liga.statsscreenplugin.screens.allmatches.AllMatchesPresenter
 import com.applicaster.liga.statsscreenplugin.screens.allmatches.AllMatchesView
-import com.applicaster.liga.statsscreenplugin.screens.home.adapters.GroupAdapter
+import com.applicaster.liga.statsscreenplugin.screens.home.adapters.TeamAdapter
 import com.applicaster.liga.statsscreenplugin.screens.home.adapters.MatchAdapter
 import com.applicaster.liga.statsscreenplugin.screens.team.adapter.SquadAdapter
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
@@ -25,7 +25,7 @@ import com.applicaster.util.StringUtil
 import kotlinx.android.synthetic.main.fragment_squad.*
 
 class TeamFragment : Fragment(), TeamView, AllMatchesView, SquadAdapter.OnPlayerClickedListener,
-        GroupAdapter.OnTeamFlagClickListener, MatchAdapter.OnMatchClickListener {
+        TeamAdapter.OnTeamFlagClickListener, MatchAdapter.OnMatchClickListener {
 
 
     private var teamPresenter: TeamPresenter = TeamPresenter(this, TeamInteractor())
