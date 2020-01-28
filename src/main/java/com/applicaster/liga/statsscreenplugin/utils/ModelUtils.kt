@@ -296,5 +296,5 @@ class ModelUtils {
 }
 
 enum class UrlPrefix {
-    person, flag, shield, shirt
+    person, flag, shield, shirt, partidos
 }

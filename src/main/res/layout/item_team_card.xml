@@ -11,11 +11,13 @@
     applicaster:cardCornerRadius="@dimen/card_corner_radius"
     applicaster:cardElevation="2dp">
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@color/white">
 
         <LinearLayout
+            android:id="@+id/view_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -43,8 +45,7 @@
                     android:layout_height="43dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
-                    android:layout_toRightOf="@+id/tv_order_number"
-                    tools:src="@drawable/flag_2j2402oabiovxw24cnjk9m369" />
+                    android:layout_toRightOf="@+id/tv_order_number" />
 
                 <com.applicaster.util.ui.CustomTextView
                     android:id="@+id/tv_team_name"
@@ -80,6 +81,7 @@
                 android:background="@color/layout_background"
                 android:visibility="gone" />
 
+
             <LinearLayout
                 android:id="@+id/rl_second_container"
                 android:layout_width="match_parent"
@@ -92,6 +94,7 @@
                 android:paddingBottom="24dp"
                 android:visibility="gone"
                 android:weightSum="2">
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -216,10 +219,11 @@
         <ImageView
             android:id="@+id/iv_indicator"
             android:layout_width="8dp"
-            android:layout_height="match_parent"
-            android:background="#B50017"
-            android:visibility="gone" />
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/view_content"
+            android:layout_alignBottom="@+id/view_content"
+            tools:background="@color/indicator_red" />
 
-    </FrameLayout>
+    </RelativeLayout>
 </android.support.v7.widget.CardView>
 

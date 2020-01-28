@@ -3,7 +3,7 @@ package com.applicaster.liga.statsscreenplugin.screens.home.adapters
 import android.content.Context
 import android.os.Build
 import android.support.annotation.RequiresApi
-import android.support.v4.widget.NestedScrollView
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.transition.Transition
 import android.transition.TransitionInflater
@@ -18,7 +18,6 @@ import com.applicaster.liga.statsscreenplugin.data.model.GroupModel
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
 import com.applicaster.liga.statsscreenplugin.utils.UrlPrefix
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_match_details.*
 import kotlinx.android.synthetic.main.item_team_card.view.*
 
 class TeamAdapter(val items: List<GroupModel.Ranking>, val context: Context?, listener: OnTeamFlagClickListener)
@@ -66,7 +65,7 @@ class TeamAdapter(val items: List<GroupModel.Ranking>, val context: Context?, li
         pts.text = rank.points.toString()
 
         ivFlag.setOnClickListener { onTeamFlagClickListener.onTeamFlagClicked(rank.contestantId) }
-        rank.contestantId?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).into(ivFlag) }
+        rank.contestantId?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).placeholder(R.drawable.unknow_flag).into(ivFlag) }
         ivFlag.setOnClickListener { onTeamFlagClickListener.onTeamFlagClicked(rank.contestantId) }
     }
 
@@ -82,7 +81,8 @@ class TeamAdapter(val items: List<GroupModel.Ranking>, val context: Context?, li
                 holderGroup.tvPoints3,
                 holderGroup.tvPoints4,
                 holderGroup.tvPoints5)
-
+        val indicatorColor = getIndicatorColor(position)
+        holderGroup.ivIndicator.setBackgroundColor(indicatorColor)
         holderGroup.ivArrow.setOnClickListener {
             // only for devices with Android 5.0 and above
             // come on! if you have a device with KitKat facebook will not work
@@ -113,7 +113,16 @@ class TeamAdapter(val items: List<GroupModel.Ranking>, val context: Context?, li
         }
     }
 
-
+    private fun getIndicatorColor(position: Int): Int {
+        return context?.let {
+            when {
+                position < 3 -> ContextCompat.getColor(it, R.color.indicator_green)
+                position == 3 -> ContextCompat.getColor(it, R.color.indicator_yellow)
+                position > (itemCount - 3) -> ContextCompat.getColor(it, R.color.indicator_red)
+                else -> 0
+            }
+        } ?: 0
+    }
 }
 
 class TeamViewHolder(view: View) : RecyclerView.ViewHolder(view) {

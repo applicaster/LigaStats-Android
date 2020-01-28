@@ -44,7 +44,7 @@ class PlayerCareerFragment : Fragment(), PlayerCareerView {
 
     override fun getPlayerCareerSuccess(playerCareer: PlayerCareerModel.PlayerCareer) {
         playerCareer.person[0].id.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.person, it)).into(iv_player_img) }
-        getPlayerFlagId(playerCareer)?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).into(iv_player_flag) }
+        getPlayerFlagId(playerCareer)?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).placeholder(R.drawable.unknow_flag).into(iv_player_flag) }
         getPlayerTeamId(playerCareer)?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.shield, it)).into(iv_player_shield) }
         // tv_player_name.text = playerCareer.person[0].matchName
         tv_player_full_name.text = playerCareer.person[0].matchName // String.format("%s %s", playerCareer.person[0].firstName, playerCareer.person[0].lastName)

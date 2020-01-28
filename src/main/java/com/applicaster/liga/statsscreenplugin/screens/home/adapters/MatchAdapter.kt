@@ -96,7 +96,8 @@ class MatchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         matchInfo?.let {
             tvDate.text = ModelUtils.getReadableDateFromString(
                     String.format("%s%s", it.date, it.time)).toUpperCase()
-            tvPhase.text = it.stage.name.toUpperCase()
+            tvPhase.text = "${context?.getString(R.string.jornada)
+                    ?: ""} ${it.week}".toUpperCase()
             tvLocation.text = it.venue?.shortName?.toUpperCase()
 
             cvMatch.setOnClickListener {
@@ -106,12 +107,12 @@ class MatchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         contestants?.let {
             tvCountry1.text = it[0].code
-            Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it[0].id)).into(ivFlag1)
+            Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it[0].id)).placeholder(R.drawable.unknow_flag).into(ivFlag1)
             ivFlag1.setOnClickListener { onTeamFlagClickListener.onTeamFlagClicked(contestants[0].id) }
 
             if (it.size > 1) {
                 tvCountry2.text = it[1].code
-                Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it[1].id)).into(ivFlag2)
+                Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it[1].id)).placeholder(R.drawable.unknow_flag).into(ivFlag2)
                 ivFlag2.setOnClickListener { onTeamFlagClickListener.onTeamFlagClicked(contestants[1].id) }
             }
         } ?: applyDefaultValues()
@@ -191,13 +192,7 @@ class AllMatchesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     var ivAllMatches = view.iv_all_matches
 
     fun bind(context: Context?) {
-        val drawable = when (ModelUtils.getLocalization()) {
-            "en-en" -> R.drawable.partidos_en
-            "es-es" -> R.drawable.partidos_es
-            "pt-br" -> R.drawable.partidos_pt
-            else -> R.drawable.partidos_en
-        }
-        ivAllMatches.setImageResource(drawable)
+        Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.partidos, CustomApplication.getDefaultDeviceLocale().language)).into(ivAllMatches)
         card.setOnClickListener {
             context?.startActivity(OptaStatsActivity.getCallingIntent(context,
                     OptaStatsActivity.Companion.Screen.ALL_MATCHES, HashMap()))

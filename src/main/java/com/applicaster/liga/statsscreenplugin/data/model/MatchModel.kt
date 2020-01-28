@@ -10,7 +10,7 @@ object MatchModel {
 
     // region MatchInfo classes
     data class MatchInfo(var id: String, var date: String, var time: String, var lastUpdated: Date,
-                         var description: String, var sport: GroupModel.Sport,
+                         var week: String, var description: String, var sport: GroupModel.Sport,
                          var ruleset: GroupModel.Ruleset, var competition: GroupModel.Competition,
                          var tournamentCalendar: GroupModel.TournamentCalendar,
                          var stage: GroupModel.Stage, var series: Series,

@@ -217,8 +217,8 @@ class MatchDetailsFragment : HeartbeatFragment(), MatchDetailsView {
         val matchInfo = matchDetails.matchInfo!!
         val liveData = matchDetails.liveData!!
 
-        matchInfo.contestant?.get(0)?.id?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).into(iv_flag_1) }
-        matchInfo.contestant?.get(1)?.id?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).into(iv_flag_2) }
+        matchInfo.contestant?.get(0)?.id?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).placeholder(R.drawable.unknow_flag).into(iv_flag_1) }
+        matchInfo.contestant?.get(1)?.id?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).placeholder(R.drawable.unknow_flag).into(iv_flag_2) }
 
         iv_flag_1.setOnClickListener { PluginUtils.goToTeamScreen(matchInfo.contestant!![0].id) }
         iv_flag_2.setOnClickListener { PluginUtils.goToTeamScreen(matchInfo.contestant!![1].id) }

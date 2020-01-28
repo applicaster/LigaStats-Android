@@ -142,7 +142,7 @@ class TeamFragment : Fragment(), TeamView, AllMatchesView, SquadAdapter.OnPlayer
         val squad = teamSquad.squad[0]
 
         squad.contestantId?.let {
-            Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).into(iv_team_flag)
+            Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).placeholder(R.drawable.unknow_flag).into(iv_team_flag)
             Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.shirt, it)).into(iv_team_shirt)
             Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.shield, it)).into(iv_team_shield)
         }
