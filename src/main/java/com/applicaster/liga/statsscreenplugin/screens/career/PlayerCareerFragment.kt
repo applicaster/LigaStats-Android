@@ -11,6 +11,7 @@ import com.applicaster.liga.statsscreenplugin.R
 import com.applicaster.liga.statsscreenplugin.data.model.PlayerCareerModel
 import com.applicaster.liga.statsscreenplugin.plugin.PluginDataRepository
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
+import com.applicaster.liga.statsscreenplugin.utils.UrlPrefix
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_player.*
 
@@ -42,18 +43,9 @@ class PlayerCareerFragment : Fragment(), PlayerCareerView {
     }
 
     override fun getPlayerCareerSuccess(playerCareer: PlayerCareerModel.PlayerCareer) {
-        Picasso.get().load(String.format("%s%s.png", PluginDataRepository.INSTANCE.getImageBaseUrl(), playerCareer.person[0].id))
-                .into(iv_player_img)
-
-        if (getPlayerFlagId(playerCareer) != null) {
-            val playerFlag = String.format("flag_%s", getPlayerFlagId(playerCareer))
-            iv_player_flag.setImageResource(ModelUtils.getImageResource(iv_player_flag, playerFlag))
-        }
-        val playerTeamId = getPlayerTeamId(playerCareer)
-        if (playerTeamId != null) {
-            iv_player_shield.setImageResource(ModelUtils.getImageResource(iv_player_shield,
-                    String.format("shield_%s", playerTeamId)))
-        }
+        playerCareer.person[0].id.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.person, it)).into(iv_player_img) }
+        getPlayerFlagId(playerCareer)?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).into(iv_player_flag) }
+        getPlayerTeamId(playerCareer)?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.shield, it)).into(iv_player_shield) }
         // tv_player_name.text = playerCareer.person[0].matchName
         tv_player_full_name.text = playerCareer.person[0].matchName // String.format("%s %s", playerCareer.person[0].firstName, playerCareer.person[0].lastName)
         tv_player_position.text = ModelUtils.getPlayerPosition(context, playerCareer.person[0].position)

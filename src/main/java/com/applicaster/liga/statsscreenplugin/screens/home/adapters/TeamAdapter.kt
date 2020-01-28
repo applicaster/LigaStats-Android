@@ -16,10 +16,12 @@ import android.widget.TextView
 import com.applicaster.liga.statsscreenplugin.R
 import com.applicaster.liga.statsscreenplugin.data.model.GroupModel
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
+import com.applicaster.liga.statsscreenplugin.utils.UrlPrefix
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_match_details.*
 import kotlinx.android.synthetic.main.item_team_card.view.*
 
-class TeamAdapter(val items: List<GroupModel.Ranking>, val context: Context?,
-                  val nestedScrollView: NestedScrollView, listener: OnTeamFlagClickListener)
+class TeamAdapter(val items: List<GroupModel.Ranking>, val context: Context?, listener: OnTeamFlagClickListener)
     : RecyclerView.Adapter<TeamViewHolder>() {
 
     var onTeamFlagClickListener: OnTeamFlagClickListener = listener
@@ -52,9 +54,9 @@ class TeamAdapter(val items: List<GroupModel.Ranking>, val context: Context?,
                 .apply { duration = 300 }
     }
 
-    fun fillProfile(rank: GroupModel.Ranking, team: TextView, ivFlag: ImageView,
-                    played: TextView, won: TextView, drawn: TextView, lost: TextView,
-                    pts: TextView) {
+    private fun fillProfile(rank: GroupModel.Ranking, team: TextView, ivFlag: ImageView,
+                            played: TextView, won: TextView, drawn: TextView, lost: TextView,
+                            pts: TextView) {
 
         team.text = rank.contestantName
         played.text = rank.matchesPlayed.toString()
@@ -64,7 +66,7 @@ class TeamAdapter(val items: List<GroupModel.Ranking>, val context: Context?,
         pts.text = rank.points.toString()
 
         ivFlag.setOnClickListener { onTeamFlagClickListener.onTeamFlagClicked(rank.contestantId) }
-        ivFlag.setImageResource(ModelUtils.getImageResource(ivFlag, String.format("flag_%s", rank.contestantId)))
+        rank.contestantId?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).into(ivFlag) }
         ivFlag.setOnClickListener { onTeamFlagClickListener.onTeamFlagClicked(rank.contestantId) }
     }
 

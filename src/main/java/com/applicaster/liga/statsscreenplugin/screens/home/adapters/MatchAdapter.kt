@@ -10,6 +10,7 @@ import com.applicaster.liga.statsscreenplugin.OptaStatsActivity
 import com.applicaster.liga.statsscreenplugin.R
 import com.applicaster.liga.statsscreenplugin.data.model.MatchModel
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
+import com.applicaster.liga.statsscreenplugin.utils.UrlPrefix
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_all_matches.view.*
 import kotlinx.android.synthetic.main.item_match.view.*
@@ -105,19 +106,13 @@ class MatchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         contestants?.let {
             tvCountry1.text = it[0].code
-            ivFlag1.setImageResource(ModelUtils.getImageResource(ivFlag1,
-                    String.format("flag_%s", it[0].id)))
-            ivFlag1.setOnClickListener {
-                onTeamFlagClickListener.onTeamFlagClicked(contestants[0].id)
-            }
+            Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it[0].id)).into(ivFlag1)
+            ivFlag1.setOnClickListener { onTeamFlagClickListener.onTeamFlagClicked(contestants[0].id) }
 
             if (it.size > 1) {
                 tvCountry2.text = it[1].code
-                ivFlag2.setImageResource(ModelUtils.getImageResource(ivFlag2,
-                        String.format("flag_%s", it[1].id)))
-                ivFlag2.setOnClickListener {
-                    onTeamFlagClickListener.onTeamFlagClicked(contestants[1].id)
-                }
+                Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it[1].id)).into(ivFlag2)
+                ivFlag2.setOnClickListener { onTeamFlagClickListener.onTeamFlagClicked(contestants[1].id) }
             }
         } ?: applyDefaultValues()
 

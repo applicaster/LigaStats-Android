@@ -137,13 +137,8 @@ class ModelUtils {
             return dateFormatter.format(value)
         }
 
-        fun getImageResource(ivFlag: ImageView, id: String): Int {
-            val context = ivFlag.context
-            val idRes = context.resources.getIdentifier(id.toLowerCase(), "drawable", context.packageName)
-            return when (idRes) {
-                0 -> R.drawable.flag_ajab3nmpoltsoeqcuoyi4pwzx
-                else -> idRes
-            }
+        fun getImageUrl(prefix: UrlPrefix, id: String): String {
+            return "${PluginDataRepository.INSTANCE.getImageBaseUrl()}${prefix.name}_$id.png"
         }
 
         fun getCodeFromCountryName(contestantName: String): String? {
@@ -298,4 +293,8 @@ class ModelUtils {
             }
         }
     }
+}
+
+enum class UrlPrefix {
+    person, flag, shield, shirt
 }

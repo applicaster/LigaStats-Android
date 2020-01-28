@@ -21,7 +21,9 @@ import com.applicaster.liga.statsscreenplugin.screens.home.adapters.MatchAdapter
 import com.applicaster.liga.statsscreenplugin.screens.team.adapter.SquadAdapter
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
 import com.applicaster.liga.statsscreenplugin.utils.PluginUtils
+import com.applicaster.liga.statsscreenplugin.utils.UrlPrefix
 import com.applicaster.util.StringUtil
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_squad.*
 
 class TeamFragment : Fragment(), TeamView, AllMatchesView, SquadAdapter.OnPlayerClickedListener,
@@ -139,12 +141,11 @@ class TeamFragment : Fragment(), TeamView, AllMatchesView, SquadAdapter.OnPlayer
     override fun getTeamSquadSuccess(teamSquad: PlayerSquadModel.PlayerSquad) {
         val squad = teamSquad.squad[0]
 
-        iv_team_flag.setImageResource(ModelUtils.getImageResource(iv_team_flag,
-                String.format("flag_%s", squad.contestantId)))
-        iv_team_shirt.setImageResource(ModelUtils.getImageResource(iv_team_shirt,
-                String.format("shirt_%s", squad.contestantId)))
-        iv_team_shield.setImageResource(ModelUtils.getImageResource(iv_team_shield,
-                String.format("shield_%s", squad.contestantId)))
+        squad.contestantId?.let {
+            Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).into(iv_team_flag)
+            Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.shirt, it)).into(iv_team_shirt)
+            Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.shield, it)).into(iv_team_shield)
+        }
         tv_team_name.text = squad.contestantName
 
         if (squad.person.isNotEmpty()) {

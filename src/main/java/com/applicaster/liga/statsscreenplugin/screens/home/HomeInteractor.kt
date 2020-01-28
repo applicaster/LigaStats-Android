@@ -33,8 +33,11 @@ class HomeInteractor : Interactor() {
     }
 
     fun requestAllMatchesFromDate(onFinishedListener: OnFinishedListener) {
-        disposable = copaAmericaApiService.getAllMatches(PluginDataRepository.INSTANCE.getToken(), referer,
-                "c", "json", calendarId,
+        disposable = copaAmericaApiService.getAllMatches(PluginDataRepository.INSTANCE.getToken(),
+                referer,
+                "c",
+                "json",
+                calendarId,
                 ModelUtils.getLocalization())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

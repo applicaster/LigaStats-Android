@@ -20,7 +20,10 @@ import com.applicaster.liga.statsscreenplugin.screens.matchdetails.adapter.Playe
 import com.applicaster.liga.statsscreenplugin.utils.Constants.FORMATION_USED
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
 import com.applicaster.liga.statsscreenplugin.utils.PluginUtils
+import com.applicaster.liga.statsscreenplugin.utils.UrlPrefix
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_match_details.*
+import kotlinx.android.synthetic.main.fragment_player.*
 
 class MatchDetailsFragment : HeartbeatFragment(), MatchDetailsView {
 
@@ -214,15 +217,11 @@ class MatchDetailsFragment : HeartbeatFragment(), MatchDetailsView {
         val matchInfo = matchDetails.matchInfo!!
         val liveData = matchDetails.liveData!!
 
-        iv_flag_1.setImageResource(ModelUtils.getImageResource(iv_flag_1, String.format("flag_%s", matchInfo.contestant!![0].id)))
-        iv_flag_2.setImageResource(ModelUtils.getImageResource(iv_flag_1, String.format("flag_%s", matchInfo.contestant!![1].id)))
+        matchInfo.contestant?.get(0)?.id?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).into(iv_flag_1) }
+        matchInfo.contestant?.get(1)?.id?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).into(iv_flag_2) }
 
-        iv_flag_1.setOnClickListener {
-            PluginUtils.goToTeamScreen(matchInfo.contestant!![0].id)
-        }
-        iv_flag_2.setOnClickListener {
-            PluginUtils.goToTeamScreen(matchInfo.contestant!![1].id)
-        }
+        iv_flag_1.setOnClickListener { PluginUtils.goToTeamScreen(matchInfo.contestant!![0].id) }
+        iv_flag_2.setOnClickListener { PluginUtils.goToTeamScreen(matchInfo.contestant!![1].id) }
 
         tv_date.text = ModelUtils.getReadableDateFromString(String.format("%s%s", matchInfo.date, matchInfo.time)).toUpperCase()
         tv_phase.text = matchInfo.stage.name.toUpperCase()

@@ -16,6 +16,8 @@ import android.widget.TextView
 import com.applicaster.liga.statsscreenplugin.R
 import com.applicaster.liga.statsscreenplugin.data.model.GroupModel
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
+import com.applicaster.liga.statsscreenplugin.utils.UrlPrefix
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_group_card.view.*
 
 class GroupAdapter(val items: List<GroupModel.Division>, val context: Context?,
@@ -132,15 +134,13 @@ class GroupAdapter(val items: List<GroupModel.Division>, val context: Context?,
         plusLess.text = rank.goaldifference
         pts.text = rank.points.toString()
 
-        ivMiniFlag.setImageResource(ModelUtils.getImageResource(ivMiniFlag, String.format("flag_%s", rank.contestantId)))
-        ivMiniFlag.setOnClickListener {
-            onTeamFlagClickListener.onTeamFlagClicked(rank.contestantId)
+        rank.contestantId?.let {
+            Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).into(ivMiniFlag)
+            Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).into(ivFlag)
         }
 
-        ivFlag.setImageResource(ModelUtils.getImageResource(ivFlag, String.format("flag_%s", rank.contestantId)))
-        ivFlag.setOnClickListener {
-            onTeamFlagClickListener.onTeamFlagClicked(rank.contestantId)
-        }
+        ivMiniFlag.setOnClickListener { onTeamFlagClickListener.onTeamFlagClicked(rank.contestantId) }
+        ivFlag.setOnClickListener { onTeamFlagClickListener.onTeamFlagClicked(rank.contestantId) }
     }
 }
 

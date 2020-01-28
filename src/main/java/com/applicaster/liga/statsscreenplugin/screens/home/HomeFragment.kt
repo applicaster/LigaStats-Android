@@ -90,8 +90,7 @@ class HomeFragment : HeartbeatFragment(), HomeView, MatchView, TeamAdapter.OnTea
     override fun getGroupsSuccess(groupCards: GroupModel.Group) {
         rv_group_cards.layoutManager = LinearLayoutManager(context)
         rv_group_cards.isNestedScrollingEnabled = false
-        rv_group_cards.adapter = TeamAdapter(ModelUtils.getRakesWithTypeTotal(groupCards), context,
-                nsv_container, this)
+        rv_group_cards.adapter = TeamAdapter(ModelUtils.getRakesWithTypeTotal(groupCards), context, this)
     }
 
     override fun getGroupsFail(error: String?) {
