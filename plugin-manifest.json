@@ -5,14 +5,14 @@
   },
   "dependency_repository_url": [],
   "platform": "android",
-  "author_name": "Juan Hernandez",
-  "author_email": "j.hernandez@applicaster.com",
+  "author_name": "Dmytro Puzak",
+  "author_email": "dmytro.puzak@corewillsoft.com",
   "manifest_version": "0.0.1",
-  "name": "Liga Stats Screen Plugin",
+  "name": "Liga America Stats Screen Plugin",
   "description": "Screens to show statistics of an Liga client",
   "type": "general",
   "screen": true,
-  "identifier": "LigaStatsPlugin",
+  "identifier": "LigaAmericaStatsScreenPlugin",
   "ui_builder_support": true,
   "whitelisted_account_ids": [
     "56e92d4b643037000b000000"
