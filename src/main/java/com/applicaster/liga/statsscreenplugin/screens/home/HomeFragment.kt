@@ -23,7 +23,7 @@ import com.applicaster.liga.statsscreenplugin.utils.Constants.UTC_DATE_FORMAT
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
 import com.applicaster.liga.statsscreenplugin.utils.PluginUtils
 import com.applicaster.lesscodeutils.date.DateUtils.Companion.getCurrentDate
-import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.liga_fragment_home.*
 import kotlin.collections.ArrayList
 
 /**
@@ -58,7 +58,7 @@ class HomeFragment : HeartbeatFragment(), HomeView, MatchView, TeamAdapter.OnTea
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_home, container,
+        return inflater.inflate(R.layout.liga_fragment_home, container,
                 false)
     }
 

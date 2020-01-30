@@ -19,7 +19,7 @@ class MatchFragment : Fragment(), MatchView {
     var textView: TextView? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val fragmentView: View = inflater.inflate(R.layout.fragment_matches, container, false)
+        val fragmentView: View = inflater.inflate(R.layout.liga_fragment_matches, container, false)
         textView = fragmentView.findViewById(R.id.tv_poc)
         return fragmentView
     }

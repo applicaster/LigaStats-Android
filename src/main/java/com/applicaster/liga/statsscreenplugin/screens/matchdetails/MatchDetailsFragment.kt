@@ -22,8 +22,7 @@ import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
 import com.applicaster.liga.statsscreenplugin.utils.PluginUtils
 import com.applicaster.liga.statsscreenplugin.utils.UrlPrefix
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_match_details.*
-import kotlinx.android.synthetic.main.fragment_player.*
+import kotlinx.android.synthetic.main.liga_fragment_match_details.*
 
 class MatchDetailsFragment : HeartbeatFragment(), MatchDetailsView {
 
@@ -45,7 +44,7 @@ class MatchDetailsFragment : HeartbeatFragment(), MatchDetailsView {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_match_details, container, false)
+        return inflater.inflate(R.layout.liga_fragment_match_details, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

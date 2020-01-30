@@ -10,7 +10,7 @@ import com.applicaster.liga.statsscreenplugin.data.model.PlayerSquadModel
 import com.applicaster.liga.statsscreenplugin.plugin.PluginDataRepository
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_player_squad.view.*
+import kotlinx.android.synthetic.main.liga_item_player_squad.view.*
 
 class SquadAdapter(private val items: List<PlayerSquadModel.Person>, val context: Context?, private val listener: OnPlayerClickedListener) :
         RecyclerView.Adapter<SquadViewHolder>() {
@@ -23,8 +23,8 @@ class SquadAdapter(private val items: List<PlayerSquadModel.Person>, val context
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SquadViewHolder {
-        val layout = if (viewType == 0) R.layout.item_player_squad
-        else R.layout.item_player_squad_to_the_right
+        val layout = if (viewType == 0) R.layout.liga_item_player_squad
+        else R.layout.liga_item_player_squad_to_the_right
         return SquadViewHolder(LayoutInflater.from(context).inflate(layout, parent, false))
     }
 

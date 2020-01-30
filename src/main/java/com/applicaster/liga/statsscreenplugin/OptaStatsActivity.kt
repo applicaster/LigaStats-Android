@@ -12,7 +12,7 @@ import com.applicaster.liga.statsscreenplugin.screens.career.PlayerCareerFragmen
 import com.applicaster.liga.statsscreenplugin.screens.matchdetails.MatchDetailsFragment
 import com.applicaster.liga.statsscreenplugin.screens.team.TeamFragment
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_copa_america_stats.*
+import kotlinx.android.synthetic.main.activity_liga_america_stats.*
 
 class OptaStatsActivity : AppCompatActivity() {
 
@@ -56,7 +56,7 @@ class OptaStatsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_copa_america_stats)
+        setContentView(R.layout.activity_liga_america_stats)
 
         Picasso.get().load(PluginDataRepository.INSTANCE.getBackButtonUrl())
                 .into(iv_back)

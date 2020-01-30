@@ -15,7 +15,7 @@ import com.applicaster.liga.statsscreenplugin.screens.home.adapters.TeamAdapter
 import com.applicaster.liga.statsscreenplugin.screens.home.adapters.MatchAdapter
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
 import com.applicaster.liga.statsscreenplugin.utils.PluginUtils
-import kotlinx.android.synthetic.main.fragment_all_matches.*
+import kotlinx.android.synthetic.main.liga_fragment_all_matches.*
 
 class AllMatchesFragment : Fragment(), AllMatchesView, TeamAdapter.OnTeamFlagClickListener,
         MatchAdapter.OnMatchClickListener {
@@ -38,7 +38,7 @@ class AllMatchesFragment : Fragment(), AllMatchesView, TeamAdapter.OnTeamFlagCli
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_all_matches, container, false)
+        return inflater.inflate(R.layout.liga_fragment_all_matches, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

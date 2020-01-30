@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.applicaster.liga.statsscreenplugin.R
-import kotlinx.android.synthetic.main.item_player.view.*
+import kotlinx.android.synthetic.main.liga_item_player.view.*
 
 class PlayerPositionAdapter(private val items: List<PlayerPosition>?, val context: Context?)
     : RecyclerView.Adapter<PositionViewHolder>() {
@@ -18,7 +18,7 @@ class PlayerPositionAdapter(private val items: List<PlayerPosition>?, val contex
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PositionViewHolder {
         resources = context?.resources
-        return PositionViewHolder(LayoutInflater.from(context).inflate(R.layout.item_player, parent,
+        return PositionViewHolder(LayoutInflater.from(context).inflate(R.layout.liga_item_player, parent,
                 false))
     }
 

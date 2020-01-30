@@ -18,7 +18,7 @@ import com.applicaster.liga.statsscreenplugin.data.model.GroupModel
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
 import com.applicaster.liga.statsscreenplugin.utils.UrlPrefix
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_team_card.view.*
+import kotlinx.android.synthetic.main.liga_item_team_card.view.*
 
 class TeamAdapter(val items: List<GroupModel.Ranking>, val context: Context?, listener: OnTeamFlagClickListener)
     : RecyclerView.Adapter<TeamViewHolder>() {
@@ -33,7 +33,7 @@ class TeamAdapter(val items: List<GroupModel.Ranking>, val context: Context?, li
     private var recyclerView: RecyclerView? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
-        return TeamViewHolder(LayoutInflater.from(context).inflate(R.layout.item_team_card, parent, false))
+        return TeamViewHolder(LayoutInflater.from(context).inflate(R.layout.liga_item_team_card, parent, false))
     }
 
     override fun getItemCount(): Int {

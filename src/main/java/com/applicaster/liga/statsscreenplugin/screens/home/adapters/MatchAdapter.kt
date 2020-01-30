@@ -12,8 +12,8 @@ import com.applicaster.liga.statsscreenplugin.data.model.MatchModel
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
 import com.applicaster.liga.statsscreenplugin.utils.UrlPrefix
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_all_matches.view.*
-import kotlinx.android.synthetic.main.item_match.view.*
+import kotlinx.android.synthetic.main.liga_item_all_matches.view.*
+import kotlinx.android.synthetic.main.liga_item_match.view.*
 
 class MatchAdapter(private val items: List<Any>, private val context: Context?,
                    listener: TeamAdapter.OnTeamFlagClickListener,
@@ -32,11 +32,11 @@ class MatchAdapter(private val items: List<Any>, private val context: Context?,
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when {
-            allMatchesView -> MatchViewHolder(LayoutInflater.from(context).inflate(R.layout.item_match_in_all_matches, parent,
+            allMatchesView -> MatchViewHolder(LayoutInflater.from(context).inflate(R.layout.liga_item_match_in_all_matches, parent,
                     false))
-            viewType == regularCard -> MatchViewHolder(LayoutInflater.from(context).inflate(R.layout.item_match, parent,
+            viewType == regularCard -> MatchViewHolder(LayoutInflater.from(context).inflate(R.layout.liga_item_match, parent,
                     false))
-            else -> AllMatchesViewHolder(LayoutInflater.from(context).inflate(R.layout.item_all_matches,
+            else -> AllMatchesViewHolder(LayoutInflater.from(context).inflate(R.layout.liga_item_all_matches,
                     parent, false))
         }
     }

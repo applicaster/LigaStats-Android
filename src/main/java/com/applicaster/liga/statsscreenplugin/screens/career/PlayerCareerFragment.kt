@@ -13,7 +13,7 @@ import com.applicaster.liga.statsscreenplugin.plugin.PluginDataRepository
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
 import com.applicaster.liga.statsscreenplugin.utils.UrlPrefix
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_player.*
+import kotlinx.android.synthetic.main.liga_fragment_player.*
 
 class PlayerCareerFragment : Fragment(), PlayerCareerView {
 
@@ -31,7 +31,7 @@ class PlayerCareerFragment : Fragment(), PlayerCareerView {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_player, container, false)
+        return inflater.inflate(R.layout.liga_fragment_player, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,7 +43,7 @@ class PlayerCareerFragment : Fragment(), PlayerCareerView {
     }
 
     override fun getPlayerCareerSuccess(playerCareer: PlayerCareerModel.PlayerCareer) {
-        playerCareer.person[0].id.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.person, it)).into(iv_player_img) }
+        playerCareer.person[0].id.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.person, it)).placeholder(R.drawable.player_placeholder).into(iv_player_img) }
         getPlayerFlagId(playerCareer)?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).placeholder(R.drawable.unknow_flag).into(iv_player_flag) }
         getPlayerTeamId(playerCareer)?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.shield, it)).into(iv_player_shield) }
         // tv_player_name.text = playerCareer.person[0].matchName

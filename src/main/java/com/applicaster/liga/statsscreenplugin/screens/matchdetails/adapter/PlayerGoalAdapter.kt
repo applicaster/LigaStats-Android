@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.applicaster.liga.statsscreenplugin.R
 import com.applicaster.liga.statsscreenplugin.data.model.MatchModel
-import kotlinx.android.synthetic.main.item_away_goal.view.*
+import kotlinx.android.synthetic.main.liga_item_away_goal.view.*
 
 class PlayerGoalAdapter(private val items: List<MatchModel.Goal>?, val context: Context?,
                         var homeContestantId: String)
@@ -17,7 +17,7 @@ class PlayerGoalAdapter(private val items: List<MatchModel.Goal>?, val context: 
     private val awayGoal = 1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerGoalViewHolder {
-        val layoutId = if (viewType == homeGoal) R.layout.item_home_goal else R.layout.item_away_goal
+        val layoutId = if (viewType == homeGoal) R.layout.liga_item_home_goal else R.layout.liga_item_away_goal
         return PlayerGoalViewHolder(LayoutInflater.from(context).inflate(layoutId, parent, false))
     }
 

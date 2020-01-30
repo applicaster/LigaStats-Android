@@ -9,9 +9,9 @@ import com.applicaster.liga.statsscreenplugin.R
 import com.applicaster.liga.statsscreenplugin.data.model.MatchModel
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
 import com.applicaster.liga.statsscreenplugin.utils.PluginUtils
-import kotlinx.android.synthetic.main.item_away_player_team.view.tv_player_name
-import kotlinx.android.synthetic.main.item_away_player_team.view.tv_player_number
-import kotlinx.android.synthetic.main.item_away_player_team.view.tv_player_position
+import kotlinx.android.synthetic.main.liga_item_away_player_team.view.tv_player_name
+import kotlinx.android.synthetic.main.liga_item_away_player_team.view.tv_player_number
+import kotlinx.android.synthetic.main.liga_item_away_player_team.view.tv_player_position
 
 class PlayerTeamAdapter(private val items: List<MatchModel.Player>?, val context: Context?,
                         var isFromHomeTeam: Boolean)
@@ -21,8 +21,8 @@ class PlayerTeamAdapter(private val items: List<MatchModel.Player>?, val context
     private val awayPlayer = 1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerViewHolder {
-        val layoutId = if (viewType == homePlayer) R.layout.item_home_player_team
-        else R.layout.item_away_player_team
+        val layoutId = if (viewType == homePlayer) R.layout.liga_item_home_player_team
+        else R.layout.liga_item_away_player_team
 
         return PlayerViewHolder(LayoutInflater.from(context).inflate(layoutId, parent, false))
     }

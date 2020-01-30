@@ -24,7 +24,7 @@ import com.applicaster.liga.statsscreenplugin.utils.PluginUtils
 import com.applicaster.liga.statsscreenplugin.utils.UrlPrefix
 import com.applicaster.util.StringUtil
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_squad.*
+import kotlinx.android.synthetic.main.liga_fragment_squad.*
 
 class TeamFragment : Fragment(), TeamView, AllMatchesView, SquadAdapter.OnPlayerClickedListener,
         TeamAdapter.OnTeamFlagClickListener, MatchAdapter.OnMatchClickListener {
@@ -45,7 +45,7 @@ class TeamFragment : Fragment(), TeamView, AllMatchesView, SquadAdapter.OnPlayer
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_squad, container, false)
+        return inflater.inflate(R.layout.liga_fragment_squad, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
