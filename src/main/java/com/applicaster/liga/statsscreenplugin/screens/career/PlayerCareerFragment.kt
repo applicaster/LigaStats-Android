@@ -53,11 +53,8 @@ class PlayerCareerFragment : Fragment(), PlayerCareerView {
         tv_player_dob.text = ModelUtils.getStandardFormatFromDate(playerCareer.person[0].dateOfBirth)
 
         tv_profesional_team.text = getProfessionalTeam(playerCareer)
-        if (playerCareer.person[0].height != null)
-            tv_player_height.text = String.format("%s cm", playerCareer.person[0].height)
-
-        if (playerCareer.person[0].weight != null)
-            tv_player_weight.text = String.format("%s kg", playerCareer.person[0].weight)
+        playerCareer.person[0].height.let { tv_player_height.text = String.format("%s cm", it) }
+        playerCareer.person[0].weight.let { tv_player_weight.text = String.format("%s kg", it) }
 
         // heavy loops that need to be executed in a separate thread
         synchronized(this) {

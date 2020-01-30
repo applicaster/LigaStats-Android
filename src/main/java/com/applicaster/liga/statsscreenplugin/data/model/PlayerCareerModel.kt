@@ -13,7 +13,7 @@ object PlayerCareerModel {
             val firstName: String,
             val foot: String,
             val gender: String,
-            val height: String,
+            val height: String?,
             val id: String,
             val lastName: String,
             val lastUpdated: String,
@@ -25,7 +25,7 @@ object PlayerCareerModel {
             val position: String,
             val status: String,
             val type: String,
-            val weight: String
+            val weight: String?
     )
 
     data class Membership(
