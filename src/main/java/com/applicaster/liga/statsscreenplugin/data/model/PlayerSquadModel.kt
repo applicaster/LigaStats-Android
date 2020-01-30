@@ -11,7 +11,7 @@ object PlayerSquadModel {
             val competitionName: String,
             val contestantClubName: String,
             val contestantCode: String,
-            val contestantId: String,
+            val contestantId: String?,
             val contestantName: String,
             val contestantShortName: String,
             val person: List<Person>,
