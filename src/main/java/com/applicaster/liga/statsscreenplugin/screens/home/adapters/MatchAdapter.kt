@@ -55,15 +55,15 @@ class MatchAdapter(private val items: List<Any>, private val context: Context?,
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if ((items[position] as MatchModel.Match).matchInfo != null) {
-            (holder as MatchViewHolder).bind(context, items[position] as MatchModel.Match,
+            (holder as MatchViewHolder).bind(items[position] as MatchModel.Match,
                     onTeamFlagClickListener, onMatchClickListener)
         } else {
-            (holder as AllMatchesViewHolder).bind(context)
+            (holder as AllMatchesViewHolder).bind()
         }
     }
 }
 
-class MatchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class MatchViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
     var cvMatch = view.cv_match
 
     var tvDate = view.tv_date
@@ -82,8 +82,9 @@ class MatchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     var tvPenaltiesHome = view.tv_penalties_home
     var tvPenaltiesAway = view.tv_penalties_away
 
-    fun bind(context: Context?, match: MatchModel.Match, onTeamFlagClickListener: TeamAdapter.OnTeamFlagClickListener,
+    fun bind(match: MatchModel.Match, onTeamFlagClickListener: TeamAdapter.OnTeamFlagClickListener,
              onMatchClickListener: MatchAdapter.OnMatchClickListener) {
+        val context = view.context
         val matchInfo = match.matchInfo
         val contestants = matchInfo?.contestant
         val liveData = match.liveData
@@ -187,14 +188,23 @@ class MatchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     }
 }
 
-class AllMatchesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    var card = view.card_all_matches
-    var ivAllMatches = view.iv_all_matches
+class AllMatchesViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    private val card = view.card_all_matches
+    private val ivAllMatches = view.iv_all_matches
 
-    fun bind(context: Context?) {
-        Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.partidos, CustomApplication.getDefaultDeviceLocale().language)).into(ivAllMatches)
+    fun bind() {
+        val context = view.context
+        val density = context.resources.displayMetrics.density
+        val resizeHeight = context.resources.getDimensionPixelOffset(R.dimen.min_height_item_all_matches)
+        val resizeWidth = context.resources.displayMetrics.widthPixels - (density * 20)
+
+        Picasso.get()
+                .load(ModelUtils.getImageUrl(UrlPrefix.partidos, CustomApplication.getDefaultDeviceLocale().language))
+                .resize(resizeWidth.toInt(), resizeHeight)
+                .into(ivAllMatches)
+
         card.setOnClickListener {
-            context?.startActivity(OptaStatsActivity.getCallingIntent(context,
+            context.startActivity(OptaStatsActivity.getCallingIntent(context,
                     OptaStatsActivity.Companion.Screen.ALL_MATCHES, HashMap()))
         }
     }

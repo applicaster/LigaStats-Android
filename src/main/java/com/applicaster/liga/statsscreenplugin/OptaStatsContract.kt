@@ -64,7 +64,7 @@ class OptaStatsContract : PluginScreen, PluginSchemeI, GenericPluginI {
     // the "nasty" solution for this is having parameters in standard configuration and plugin
     // screen configuration
     override fun setPluginModel(plugin: Plugin?) {
-        if (setPluginConfiguration(plugin?.configuration as LinkedTreeMap<*, *>?)) {
+        if (setPluginConfiguration(plugin?.configuration as? LinkedTreeMap<*, *>?)) {
             Log.d(this.javaClass.simpleName, "plugin initialized")
         } else {
             Log.d(this.javaClass.simpleName, "plugin not initialized")

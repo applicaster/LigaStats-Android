@@ -12,4 +12,5 @@
     <dimen name="max_height_player_name">200dp</dimen>
     <dimen name="highlight_small_title_size">20sp</dimen>
     <dimen name="score_text_size">52sp</dimen>
+    <dimen name="min_height_item_all_matches">250dp</dimen>
 </resources>
