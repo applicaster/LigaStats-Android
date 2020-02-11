@@ -25,15 +25,15 @@ interface PluginRepository {
 
     fun setCalendarId(calendarId: String)
 
-    fun isShowTeam() : Boolean
+    fun isShowTeam(): Boolean
 
     fun setShowTeam(showTeam: Any?)
 
-    fun getLogoUrl() : String
+    fun getLogoUrl(): String
 
     fun setLogoUrl(logoUrl: String)
 
-    fun getBackButtonUrl() : String
+    fun getBackButtonUrl(): String
 
     fun setBackButtonUrl(backButtonUrl: String)
 }
