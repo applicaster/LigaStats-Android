@@ -7,7 +7,7 @@
   "platform": "android",
   "author_name": "Dmytro Puzak",
   "author_email": "dmytro.puzak@corewillsoft.com",
-  "manifest_version": "0.0.1",
+  "manifest_version": "0.0.2",
   "name": "Stats Screens League Format",
   "description": "Screens to show statistics of an Liga client",
   "type": "general",
@@ -24,45 +24,6 @@
   "deprecated_since_zapp_sdk": "",
   "unsupported_since_zapp_sdk": "",
   "react_native": false,
-  "custom_configuration_fields": [
-    {
-      "key": "token",
-      "tooltip_text": "Token to access the information provided by Liga",
-      "type": "text"
-    },
-    {
-      "key": "referer",
-      "tooltip_text": "Referer of the provider",
-      "type": "text"
-    },
-    {
-      "key": "competition_id",
-      "tooltip_text": "Competition Id of the tournament",
-      "type": "text"
-    },
-    {
-      "key": "calendar_id",
-      "tooltip_text": "Calendar id of the tournament",
-      "type": "text"
-    },
-    {
-      "key": "image_base_url",
-      "tooltip_text": "URL where the plugin get the images",
-      "type": "text"
-    },
-    {
-      "key": "show_team",
-      "tooltip_text": "Option to show team or not",
-      "type": "checkbox"
-    },
-    {
-      "key": "number_of_matches",
-      "label": "Number of matches",
-      "placeholder": "",
-      "tooltip_text": "Change how many matches we show in the carrousel",
-      "type": "text"
-    }
-  ],
   "general": {
     "fields": [
       {
