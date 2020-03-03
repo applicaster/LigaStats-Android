@@ -18,15 +18,20 @@ import kotlin.collections.ArrayList
 
 class OptaStatsContract : PluginScreen, PluginSchemeI, GenericPluginI {
 
+    companion object {
+        private val TAG: String = "LigaOptaStatsContract"
+    }
+
     private var configurationHandler: PluginConfigurationHandler = PluginConfigurationHandler()
 
     override fun generateFragment(screenMap: HashMap<String, Any>?, dataSource: Serializable?): Fragment {
+        Log.d(TAG, "generateFragment ${screenMap?.get("name").toString()}")
         screenMap?.let {
+            PluginDataRepository.INSTANCE.setAppId(it["name"].toString())
             // this piece of code is really unstable because is doing a lot of casts and
             // the access to the assets are not friendly enough to trust
             // that's why it's surrounded by a try catch block
             getNavigationAssets(it)
-
             return if (setPluginConfiguration(it["general"] as LinkedTreeMap<*, *>)) HomeFragment()
             else ErrorFragment()
         }

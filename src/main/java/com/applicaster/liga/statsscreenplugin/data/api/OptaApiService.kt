@@ -2,8 +2,11 @@ package com.applicaster.liga.statsscreenplugin.data.api
 
 import com.applicaster.app.CustomApplication
 import com.applicaster.liga.statsscreenplugin.data.model.*
+import com.applicaster.liga.statsscreenplugin.plugin.PluginDataRepository
 import io.reactivex.Observable
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -114,11 +117,18 @@ interface OptaApiService {
         private const val BASE_URL = "http://api.performfeeds.com/soccerdata/"
         fun create(): OptaApiService {
             val interceptor = HttpLoggingInterceptor()
-            interceptor.level = HttpLoggingInterceptor.Level.BODY
+            interceptor.level = HttpLoggingInterceptor.Level.BASIC
             val client: OkHttpClient = OkHttpClient.Builder()
                     .cache(CacheProvider.provideCache(CustomApplication.getAppContext()))
                     .addInterceptor(CacheProvider.ForceCacheInterceptor())
                     .addInterceptor(interceptor)
+                    .addInterceptor {
+                        val request = it.request()
+                                .newBuilder()
+                                .addHeader("AppId", PluginDataRepository.INSTANCE.getAppId())
+                                .build()
+                        return@addInterceptor it.proceed(request)
+                    }
                     .build()
 
             val retrofit = Retrofit.Builder()

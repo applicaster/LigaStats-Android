@@ -36,4 +36,8 @@ interface PluginRepository {
     fun getBackButtonUrl(): String
 
     fun setBackButtonUrl(backButtonUrl: String)
+
+    fun setAppId(appId: String?)
+
+    fun getAppId(): String
 }
