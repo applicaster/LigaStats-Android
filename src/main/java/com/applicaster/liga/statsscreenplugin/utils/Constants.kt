@@ -14,6 +14,7 @@ object Constants {
     const val PARAM_NUMBER_OF_MATCHES = "number_of_matches"
     const val PARAM_LOGO_URL = "logo_url"
     const val PARAM_BACK_BUTTON_URL = "back_button_url"
+    const val PARAM_APP_ID = "param_app_id"
 
     // stats keys of opta
     const val FORMATION_USED = "formationUsed"

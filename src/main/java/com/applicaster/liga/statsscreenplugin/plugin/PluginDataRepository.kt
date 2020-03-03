@@ -2,6 +2,7 @@ package com.applicaster.liga.statsscreenplugin.plugin
 
 import com.applicaster.liga.statsscreenplugin.utils.Constants.DEFAULT_BACK_BUTTON_URL
 import com.applicaster.liga.statsscreenplugin.utils.Constants.DEFAULT_LOGO_URL
+import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_APP_ID
 import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_BACK_BUTTON_URL
 import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_CALENDAR_ID
 import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_COMPETITION_ID
@@ -92,5 +93,13 @@ enum class PluginDataRepository : PluginRepository {
 
     override fun setBackButtonUrl(backButtonUrl: String) {
         PreferenceUtil.getInstance().setStringPref(PARAM_BACK_BUTTON_URL, backButtonUrl)
+    }
+
+    override fun setAppId(appId: String?) {
+        appId?.let { PreferenceUtil.getInstance().setStringPref(PARAM_APP_ID, it) }
+    }
+
+    override fun getAppId(): String {
+        return PreferenceUtil.getInstance().getStringPref(PARAM_APP_ID, "")
     }
 }

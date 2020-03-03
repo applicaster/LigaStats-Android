@@ -81,7 +81,8 @@ class TeamAdapter(val items: List<GroupModel.Ranking>, val context: Context?, li
                 holderGroup.tvPoints3,
                 holderGroup.tvPoints4,
                 holderGroup.tvPoints5)
-        val indicatorColor = getIndicatorColor(position)
+
+        val indicatorColor = getIndicatorColor(position, rank.rank)
         holderGroup.ivIndicator.setBackgroundColor(indicatorColor)
         holderGroup.ivArrow.setOnClickListener {
             // only for devices with Android 5.0 and above
@@ -113,12 +114,15 @@ class TeamAdapter(val items: List<GroupModel.Ranking>, val context: Context?, li
         }
     }
 
-    private fun getIndicatorColor(position: Int): Int {
+    private fun getIndicatorColor(position: Int, rank: Int): Int {
+//        Rank 1: 3 (top 3 in green)
+//        Rank 2: 1 (team on position 4 in yellow)
+//        Rank 3: 2 (last two teams in red)
         return context?.let {
             when {
-                position < 3 -> ContextCompat.getColor(it, R.color.indicator_green)
-                position == 3 -> ContextCompat.getColor(it, R.color.indicator_yellow)
-                position > (itemCount - 3) -> ContextCompat.getColor(it, R.color.indicator_red)
+                position < 3 && rank == 3 -> ContextCompat.getColor(it, R.color.indicator_green)
+                position == 3 && rank == 1 -> ContextCompat.getColor(it, R.color.indicator_yellow)
+                position > (itemCount - 3) && rank == 2 -> ContextCompat.getColor(it, R.color.indicator_red)
                 else -> 0
             }
         } ?: 0
