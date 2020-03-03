@@ -22,7 +22,7 @@ object GroupModel {
     data class Division(val type: String, val groupId: String, val groupName: String,
                         val horizontal: Int, val ranking: List<Ranking>)
 
-    data class Ranking(val rank: Int, val contestantId: String, val contestantName: String,
+    data class Ranking(val rank: Int, val rankStatus: String, val contestantId: String, val contestantName: String,
                        val contestantShortName: String, val contestantClubName: String,
                        val contestantCode: String, val points: Int, val matchesPlayed: Int,
                        val matchesWon: Int, val matchesLost: Int, val matchesDrawn: Int,
