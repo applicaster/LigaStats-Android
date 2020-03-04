@@ -10,7 +10,7 @@ import com.applicaster.liga.statsscreenplugin.OptaStatsActivity
 import com.applicaster.liga.statsscreenplugin.R
 import com.applicaster.liga.statsscreenplugin.data.model.MatchModel
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
-import com.applicaster.liga.statsscreenplugin.utils.UrlPrefix
+import com.applicaster.liga.statsscreenplugin.utils.UrlType
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.liga_item_all_matches.view.*
 import kotlinx.android.synthetic.main.liga_item_match.view.*
@@ -108,12 +108,12 @@ class MatchViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
         contestants?.let {
             tvCountry1.text = it[0].code
-            Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it[0].id)).placeholder(R.drawable.unknow_flag).into(ivFlag1)
+            Picasso.get().load(ModelUtils.getImageUrl(UrlType.Flag, it[0].id)).placeholder(R.drawable.unknow_flag).into(ivFlag1)
             ivFlag1.setOnClickListener { onTeamFlagClickListener.onTeamFlagClicked(contestants[0].id) }
 
             if (it.size > 1) {
                 tvCountry2.text = it[1].code
-                Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it[1].id)).placeholder(R.drawable.unknow_flag).into(ivFlag2)
+                Picasso.get().load(ModelUtils.getImageUrl(UrlType.Flag, it[1].id)).placeholder(R.drawable.unknow_flag).into(ivFlag2)
                 ivFlag2.setOnClickListener { onTeamFlagClickListener.onTeamFlagClicked(contestants[1].id) }
             }
         } ?: applyDefaultValues()
@@ -199,7 +199,7 @@ class AllMatchesViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val resizeWidth = context.resources.displayMetrics.widthPixels - (density * 20)
 
         Picasso.get()
-                .load(ModelUtils.getImageUrl(UrlPrefix.partidos, CustomApplication.getDefaultDeviceLocale().language))
+                .load(ModelUtils.getImageUrl(UrlType.Partidos, CustomApplication.getDefaultDeviceLocale().language))
                 .resize(resizeWidth.toInt(), resizeHeight)
                 .into(ivAllMatches)
 

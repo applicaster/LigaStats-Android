@@ -7,9 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.applicaster.liga.statsscreenplugin.R
 import com.applicaster.liga.statsscreenplugin.data.model.PlayerSquadModel
-import com.applicaster.liga.statsscreenplugin.plugin.PluginDataRepository
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
-import com.applicaster.liga.statsscreenplugin.utils.UrlPrefix
+import com.applicaster.liga.statsscreenplugin.utils.UrlType
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.liga_item_player_squad.view.*
 
@@ -56,7 +55,7 @@ class SquadAdapter(private val items: List<PlayerSquadModel.Person>, val context
             }
         }
 
-        Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.person, items[position].id))
+        Picasso.get().load(ModelUtils.getImageUrl(UrlType.Person, items[position].id))
                 .placeholder(R.drawable.player_placeholder)
                 .into(holderGroup.ivPlayerImage)
     }

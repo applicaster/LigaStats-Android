@@ -5,7 +5,11 @@ object Constants {
     val OLD_CALENDAR_ID = "c5pvkmdgtsvjy0qnfuv1u9h49"
     val OLD_MATCH_ID = "8rusyp6d6l5i3puiwr0zmeu7e"
 
-    const val PARAM_IMAGE_BASE_URL = "image_base_url"
+    const val PARAM_SHIELD_IMAGE_BASE_URL = "shield_image_base_url"
+    const val PARAM_FLAG_IMAGE_BASE_URL = "flag_image_base_url"
+    const val PARAM_PERSON_IMAGE_BASE_URL = "person_image_base_url"
+    const val PARAM_SHIRT_IMAGE_BASE_URL = "shirt_image_base_url"
+    const val PARAM_PARTIDOS_IMAGE_BASE_URL = "partidos_image_base_url"
     const val PARAM_TOKEN = "token"
     const val PARAM_REFERER = "referer"
     const val PARAM_COMPETITION_ID = "competition_id"

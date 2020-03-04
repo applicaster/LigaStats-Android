@@ -6,10 +6,14 @@ import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_APP_ID
 import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_BACK_BUTTON_URL
 import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_CALENDAR_ID
 import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_COMPETITION_ID
-import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_IMAGE_BASE_URL
+import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_FLAG_IMAGE_BASE_URL
 import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_LOGO_URL
 import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_NUMBER_OF_MATCHES
+import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_PARTIDOS_IMAGE_BASE_URL
+import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_PERSON_IMAGE_BASE_URL
 import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_REFERER
+import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_SHIELD_IMAGE_BASE_URL
+import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_SHIRT_IMAGE_BASE_URL
 import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_SHOW_TEAM
 import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_TOKEN
 import com.applicaster.util.PreferenceUtil
@@ -47,14 +51,6 @@ enum class PluginDataRepository : PluginRepository {
 
     override fun setCalendarId(calendarId: String) {
         PreferenceUtil.getInstance().setStringPref(PARAM_CALENDAR_ID, calendarId)
-    }
-
-    override fun getImageBaseUrl(): String {
-        return PreferenceUtil.getInstance().getStringPref(PARAM_IMAGE_BASE_URL, null)
-    }
-
-    override fun setImageBaseUrl(imageBaseUrl: String) {
-        PreferenceUtil.getInstance().setStringPref(PARAM_IMAGE_BASE_URL, imageBaseUrl)
     }
 
     override fun isShowTeam(): Boolean {
@@ -101,5 +97,45 @@ enum class PluginDataRepository : PluginRepository {
 
     override fun getAppId(): String {
         return PreferenceUtil.getInstance().getStringPref(PARAM_APP_ID, "")
+    }
+
+    override fun getShieldImageBaseUrl(): String {
+        return PreferenceUtil.getInstance().getStringPref(PARAM_SHIELD_IMAGE_BASE_URL, null)
+    }
+
+    override fun setShieldImageBaseUrl(url: String) {
+        PreferenceUtil.getInstance().setStringPref(PARAM_SHIELD_IMAGE_BASE_URL, url)
+    }
+
+    override fun getFlagImageBaseUrl(): String {
+        return PreferenceUtil.getInstance().getStringPref(PARAM_FLAG_IMAGE_BASE_URL, null)
+    }
+
+    override fun setFlagImageBaseUrl(url: String) {
+        PreferenceUtil.getInstance().setStringPref(PARAM_FLAG_IMAGE_BASE_URL, url)
+    }
+
+    override fun getPersonImageBaseUrl(): String {
+        return PreferenceUtil.getInstance().getStringPref(PARAM_PERSON_IMAGE_BASE_URL, null)
+    }
+
+    override fun setPersonImageBaseUrl(url: String) {
+        PreferenceUtil.getInstance().setStringPref(PARAM_PERSON_IMAGE_BASE_URL, url)
+    }
+
+    override fun getShirtImageBaseUrl(): String {
+        return PreferenceUtil.getInstance().getStringPref(PARAM_SHIRT_IMAGE_BASE_URL, null)
+    }
+
+    override fun setShirtImageBaseUrl(url: String) {
+        PreferenceUtil.getInstance().setStringPref(PARAM_SHIRT_IMAGE_BASE_URL, url)
+    }
+
+    override fun getPartidosImageBaseUrl(): String {
+        return PreferenceUtil.getInstance().getStringPref(PARAM_PARTIDOS_IMAGE_BASE_URL, null)
+    }
+
+    override fun setPartidosImageBaseUrl(url: String) {
+        PreferenceUtil.getInstance().setStringPref(PARAM_PARTIDOS_IMAGE_BASE_URL, url)
     }
 }

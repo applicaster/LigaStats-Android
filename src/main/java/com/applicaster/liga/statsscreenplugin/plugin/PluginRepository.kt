@@ -1,9 +1,6 @@
 package com.applicaster.liga.statsscreenplugin.plugin
 
 interface PluginRepository {
-    fun getImageBaseUrl(): String
-
-    fun setImageBaseUrl(imageBaseUrl: String)
 
     fun getToken(): String
 
@@ -37,7 +34,27 @@ interface PluginRepository {
 
     fun setBackButtonUrl(backButtonUrl: String)
 
+    fun getShieldImageBaseUrl(): String
+
+    fun setShieldImageBaseUrl(url: String)
+
+    fun getFlagImageBaseUrl(): String
+
+    fun setFlagImageBaseUrl(url: String)
+
+    fun getPersonImageBaseUrl(): String
+
+    fun setPersonImageBaseUrl(url: String)
+
     fun setAppId(appId: String?)
 
     fun getAppId(): String
+
+    fun getShirtImageBaseUrl(): String
+
+    fun setShirtImageBaseUrl(url: String)
+
+    fun getPartidosImageBaseUrl(): String
+
+    fun setPartidosImageBaseUrl(url: String)
 }
