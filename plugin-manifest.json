@@ -7,7 +7,7 @@
   "platform": "android",
   "author_name": "Dmytro Puzak",
   "author_email": "dmytro.puzak@corewillsoft.com",
-  "manifest_version": "0.0.3",
+  "manifest_version": "0.0.2",
   "name": "Stats Screens League Format",
   "description": "Screens to show statistics of an Liga client",
   "type": "general",
@@ -24,43 +24,84 @@
   "deprecated_since_zapp_sdk": "",
   "unsupported_since_zapp_sdk": "",
   "react_native": false,
-  "custom_configuration_fields": [
-    {
-      "key": "token",
-      "tooltip_text": "Token to access the information provided by Liga",
-      "type": "text"
-    },
-    {
-      "key": "referer",
-      "tooltip_text": "Referer of the provider",
-      "type": "text"
-    },
-    {
-      "key": "competition_id",
-      "tooltip_text": "Competition Id of the tournament",
-      "type": "text"
-    },
-    {
-      "key": "calendar_id",
-      "tooltip_text": "Calendar id of the tournament",
-      "type": "text"
-    },
-    {
-      "key": "image_base_url",
-      "tooltip_text": "URL where the plugin get the images",
-      "type": "text"
-    },
-    {
-      "key": "show_team",
-      "tooltip_text": "Option to show team or not",
-      "type": "checkbox"
-    },
-    {
-      "key": "number_of_matches",
-      "label": "Number of matches",
-      "placeholder": "",
-      "tooltip_text": "Change how many matches we show in the carrousel",
-      "type": "text"
-    }
-  ]
+  "general": {
+    "fields": [
+      {
+        "key": "token",
+        "label": "Token",
+        "placeholder": "Enter token",
+        "label_tooltip": "Token to access the information provided by Liga",
+        "type": "text_input"
+      },
+      {
+        "key": "referer",
+        "label": "Referer",
+        "placeholder": "Enter referer",
+        "label_tooltip": "Referer of the provider",
+        "type": "text_input"
+      },
+      {
+        "key": "competition_id",
+        "label": "Competition Id",
+        "placeholder": "Enter the competition id",
+        "label_tooltip": "Competition Id of the tournament",
+        "type": "text_input"
+      },
+      {
+        "key": "calendar_id",
+        "label": "Calendar Id",
+        "placeholder": "Enter calendar id",
+        "label_tooltip": "Calendar id of the tournament",
+        "type": "text_input"
+      },
+      {
+        "key": "shield_image_base_url",
+        "label": "Shields Image Base URL",
+        "placeholder": "Enter shields image base url",
+        "label_tooltip": "URL where the plugin get the shields images",
+        "type": "text_input"
+      },
+      {
+        "key": "flag_image_base_url",
+        "label": "Flags Image Base URL",
+        "placeholder": "Enter flags image base url",
+        "label_tooltip": "URL where the plugin get the flags images",
+        "type": "text_input"
+      },
+      {
+        "key": "person_image_base_url",
+        "label": "Person Image Base URL",
+        "placeholder": "Enter person image base url",
+        "label_tooltip": "URL where the plugin get the person images",
+        "type": "text_input"
+      },
+      {
+        "key": "shirt_image_base_url",
+        "label": "Shirt Image Base URL",
+        "placeholder": "Enter shirt image base url",
+        "label_tooltip": "URL where the plugin get the shirt images",
+        "type": "text_input"
+      },
+      {
+        "key": "partidos_image_base_url",
+        "label": "Partidos Image Base URL",
+        "placeholder": "Enter partidos image base url",
+        "label_tooltip": "URL where the plugin get the partidos images",
+        "type": "text_input"
+      },
+      {
+        "key": "show_team",
+        "label": "Show team or not",
+        "label_tooltip": "Show team or not",
+        "type": "switch"
+      },
+      {
+        "key": "number_of_matches",
+        "label": "Number of matches",
+        "placeholder": "",
+        "label_tooltip": "Change how many matches we show in the carrousel",
+        "type": "text_input"
+      }
+    ]
+  }
 }
