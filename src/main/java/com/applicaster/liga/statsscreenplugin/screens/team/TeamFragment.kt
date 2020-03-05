@@ -21,7 +21,7 @@ import com.applicaster.liga.statsscreenplugin.screens.home.adapters.MatchAdapter
 import com.applicaster.liga.statsscreenplugin.screens.team.adapter.SquadAdapter
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
 import com.applicaster.liga.statsscreenplugin.utils.PluginUtils
-import com.applicaster.liga.statsscreenplugin.utils.UrlPrefix
+import com.applicaster.liga.statsscreenplugin.utils.UrlType
 import com.applicaster.util.StringUtil
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.liga_fragment_squad.*
@@ -142,9 +142,9 @@ class TeamFragment : Fragment(), TeamView, AllMatchesView, SquadAdapter.OnPlayer
         val squad = teamSquad.squad[0]
 
         squad.contestantId?.let {
-            Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).placeholder(R.drawable.unknow_flag).into(iv_team_flag)
-            Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.shirt, it)).into(iv_team_shirt)
-            Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.shield, it)).into(iv_team_shield)
+            Picasso.get().load(ModelUtils.getImageUrl(UrlType.Flag, it)).placeholder(R.drawable.unknow_flag).into(iv_team_flag)
+            Picasso.get().load(ModelUtils.getImageUrl(UrlType.Shirt, it)).into(iv_team_shirt)
+            Picasso.get().load(ModelUtils.getImageUrl(UrlType.Shield, it)).into(iv_team_shield)
         }
         tv_team_name.text = squad.contestantName
 

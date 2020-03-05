@@ -11,7 +11,7 @@ import com.applicaster.liga.statsscreenplugin.R
 import com.applicaster.liga.statsscreenplugin.data.model.PlayerCareerModel
 import com.applicaster.liga.statsscreenplugin.plugin.PluginDataRepository
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
-import com.applicaster.liga.statsscreenplugin.utils.UrlPrefix
+import com.applicaster.liga.statsscreenplugin.utils.UrlType
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.liga_fragment_player.*
 
@@ -43,11 +43,11 @@ class PlayerCareerFragment : Fragment(), PlayerCareerView {
     }
 
     override fun getPlayerCareerSuccess(playerCareer: PlayerCareerModel.PlayerCareer) {
-        playerCareer.person[0].id.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.person, it)).placeholder(R.drawable.player_placeholder).into(iv_player_img) }
-        getPlayerFlagId(playerCareer)?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).placeholder(R.drawable.unknow_flag).into(iv_player_flag) }
-        getPlayerTeamId(playerCareer)?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.shield, it)).into(iv_player_shield) }
-        // tv_player_name.text = playerCareer.person[0].matchName
-        tv_player_full_name.text = playerCareer.person[0].matchName // String.format("%s %s", playerCareer.person[0].firstName, playerCareer.person[0].lastName)
+        playerCareer.person[0].id.let { Picasso.get().load(ModelUtils.getImageUrl(UrlType.Person, it)).placeholder(R.drawable.player_placeholder).into(iv_player_img) }
+        getPlayerFlagId(playerCareer)?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlType.Flag, it)).placeholder(R.drawable.unknow_flag).into(iv_player_flag) }
+        getPlayerTeamId(playerCareer)?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlType.Shield, it)).into(iv_player_shield) }
+        // tv_player_name.text = playerCareer.Person[0].matchName
+        tv_player_full_name.text = playerCareer.person[0].matchName // String.format("%s %s", playerCareer.Person[0].firstName, playerCareer.Person[0].lastName)
         tv_player_position.text = ModelUtils.getPlayerPosition(context, playerCareer.person[0].position)
         tv_player_pob.text = String.format("%s, %s", playerCareer.person[0].placeOfBirth, playerCareer.person[0].countryOfBirth)
         tv_player_dob.text = ModelUtils.getStandardFormatFromDate(playerCareer.person[0].dateOfBirth)

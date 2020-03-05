@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView
 import android.transition.Transition
 import android.transition.TransitionInflater
 import android.transition.TransitionManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +16,7 @@ import android.widget.TextView
 import com.applicaster.liga.statsscreenplugin.R
 import com.applicaster.liga.statsscreenplugin.data.model.GroupModel
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
-import com.applicaster.liga.statsscreenplugin.utils.UrlPrefix
+import com.applicaster.liga.statsscreenplugin.utils.UrlType
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.liga_item_team_card.view.*
 
@@ -69,7 +68,7 @@ class TeamAdapter(private val items: List<GroupModel.Ranking>, val context: Cont
         pts.text = rank.points.toString()
 
         ivFlag.setOnClickListener { onTeamFlagClickListener.onTeamFlagClicked(rank.contestantId) }
-        rank.contestantId?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).placeholder(R.drawable.unknow_flag).into(ivFlag) }
+        rank.contestantId?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlType.Flag, it)).placeholder(R.drawable.unknow_flag).into(ivFlag) }
         ivFlag.setOnClickListener { onTeamFlagClickListener.onTeamFlagClicked(rank.contestantId) }
     }
 

@@ -82,7 +82,11 @@ class OptaStatsContract : PluginScreen, PluginSchemeI, GenericPluginI {
             return false
 
         params?.let {
-            PluginDataRepository.INSTANCE.setImageBaseUrl(params[Constants.PARAM_IMAGE_BASE_URL].toString())
+            PluginDataRepository.INSTANCE.setShieldImageBaseUrl(params[Constants.PARAM_SHIELD_IMAGE_BASE_URL].toString())
+            PluginDataRepository.INSTANCE.setFlagImageBaseUrl(params[Constants.PARAM_FLAG_IMAGE_BASE_URL].toString())
+            PluginDataRepository.INSTANCE.setPersonImageBaseUrl(params[Constants.PARAM_PERSON_IMAGE_BASE_URL].toString())
+            PluginDataRepository.INSTANCE.setShirtImageBaseUrl(params[Constants.PARAM_SHIRT_IMAGE_BASE_URL].toString())
+            PluginDataRepository.INSTANCE.setPartidosImageBaseUrl(params[Constants.PARAM_PARTIDOS_IMAGE_BASE_URL].toString())
             PluginDataRepository.INSTANCE.setToken(params[Constants.PARAM_TOKEN].toString())
             PluginDataRepository.INSTANCE.setCompetitionId(params[Constants.PARAM_COMPETITION_ID].toString())
             PluginDataRepository.INSTANCE.setCalendarId(params[Constants.PARAM_CALENDAR_ID].toString())
@@ -97,7 +101,11 @@ class OptaStatsContract : PluginScreen, PluginSchemeI, GenericPluginI {
 
     private fun checkParamsAreSet(params: LinkedTreeMap<*, *>?): Boolean {
         params?.let {
-            return params[Constants.PARAM_IMAGE_BASE_URL].toString().isEmpty() ||
+            return params[Constants.PARAM_SHIELD_IMAGE_BASE_URL].toString().isEmpty() ||
+                    params[Constants.PARAM_FLAG_IMAGE_BASE_URL].toString().isEmpty() ||
+                    params[Constants.PARAM_PERSON_IMAGE_BASE_URL].toString().isEmpty() ||
+                    params[Constants.PARAM_SHIRT_IMAGE_BASE_URL].toString().isEmpty() ||
+                    params[Constants.PARAM_PARTIDOS_IMAGE_BASE_URL].toString().isEmpty() ||
                     params[Constants.PARAM_TOKEN].toString().isEmpty() ||
                     params[Constants.PARAM_COMPETITION_ID].toString().isEmpty() ||
                     params[Constants.PARAM_CALENDAR_ID].toString().isEmpty() ||

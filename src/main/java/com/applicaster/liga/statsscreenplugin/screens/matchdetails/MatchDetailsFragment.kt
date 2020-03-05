@@ -20,7 +20,7 @@ import com.applicaster.liga.statsscreenplugin.screens.matchdetails.adapter.Playe
 import com.applicaster.liga.statsscreenplugin.utils.Constants.FORMATION_USED
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
 import com.applicaster.liga.statsscreenplugin.utils.PluginUtils
-import com.applicaster.liga.statsscreenplugin.utils.UrlPrefix
+import com.applicaster.liga.statsscreenplugin.utils.UrlType
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.liga_fragment_match_details.*
 
@@ -216,8 +216,8 @@ class MatchDetailsFragment : HeartbeatFragment(), MatchDetailsView {
         val matchInfo = matchDetails.matchInfo!!
         val liveData = matchDetails.liveData!!
 
-        matchInfo.contestant?.get(0)?.id?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).placeholder(R.drawable.unknow_flag).into(iv_flag_1) }
-        matchInfo.contestant?.get(1)?.id?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).placeholder(R.drawable.unknow_flag).into(iv_flag_2) }
+        matchInfo.contestant?.get(0)?.id?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlType.Flag, it)).placeholder(R.drawable.unknow_flag).into(iv_flag_1) }
+        matchInfo.contestant?.get(1)?.id?.let { Picasso.get().load(ModelUtils.getImageUrl(UrlType.Flag, it)).placeholder(R.drawable.unknow_flag).into(iv_flag_2) }
 
         iv_flag_1.setOnClickListener { PluginUtils.goToTeamScreen(matchInfo.contestant!![0].id) }
         iv_flag_2.setOnClickListener { PluginUtils.goToTeamScreen(matchInfo.contestant!![1].id) }
@@ -317,7 +317,7 @@ class MatchDetailsFragment : HeartbeatFragment(), MatchDetailsView {
             }
         }
 
-        // get the shirt number of the correspondent formation place
+        // get the Shirt number of the correspondent formation place
         val shirtNumbers: HashMap<Int, String> = HashMap()
         // to get the formation place of the player see ModelUtils.getShirtNumber
         for (i in 0..10) {

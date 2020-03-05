@@ -2,7 +2,6 @@ package com.applicaster.liga.statsscreenplugin.utils
 
 import android.content.Context
 import android.util.Log
-import android.widget.ImageView
 import com.applicaster.app.CustomApplication
 import com.applicaster.liga.statsscreenplugin.R
 import com.applicaster.liga.statsscreenplugin.data.model.AllMatchesModel
@@ -12,6 +11,7 @@ import com.applicaster.liga.statsscreenplugin.data.model.TeamModel
 import com.applicaster.liga.statsscreenplugin.plugin.PluginDataRepository
 import com.applicaster.liga.statsscreenplugin.utils.Constants.UTC_DATE_FORMAT
 import com.applicaster.lesscodeutils.date.DateUtils.Companion.getCurrentDate
+import com.applicaster.liga.statsscreenplugin.utils.UrlType.*
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -137,8 +137,14 @@ class ModelUtils {
             return dateFormatter.format(value)
         }
 
-        fun getImageUrl(prefix: UrlPrefix, id: String): String {
-            return "${PluginDataRepository.INSTANCE.getImageBaseUrl()}${prefix.name}_$id.png"
+        fun getImageUrl(type: UrlType, id: String): String {
+            return when (type) {
+                Flag -> PluginDataRepository.INSTANCE.getFlagImageBaseUrl()
+                Person -> PluginDataRepository.INSTANCE.getPersonImageBaseUrl()
+                Shield -> PluginDataRepository.INSTANCE.getShieldImageBaseUrl()
+                Shirt -> PluginDataRepository.INSTANCE.getShirtImageBaseUrl()
+                Partidos -> PluginDataRepository.INSTANCE.getPartidosImageBaseUrl()
+            }.plus(id)
         }
 
         fun getCodeFromCountryName(contestantName: String): String? {
@@ -295,6 +301,6 @@ class ModelUtils {
     }
 }
 
-enum class UrlPrefix {
-    person, flag, shield, shirt, partidos
+enum class UrlType {
+    Person, Flag, Shield, Shirt, Partidos
 }

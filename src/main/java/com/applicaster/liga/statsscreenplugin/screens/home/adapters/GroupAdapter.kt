@@ -16,7 +16,7 @@ import android.widget.TextView
 import com.applicaster.liga.statsscreenplugin.R
 import com.applicaster.liga.statsscreenplugin.data.model.GroupModel
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
-import com.applicaster.liga.statsscreenplugin.utils.UrlPrefix
+import com.applicaster.liga.statsscreenplugin.utils.UrlType
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.liga_item_group_card.view.*
 
@@ -135,8 +135,8 @@ class GroupAdapter(val items: List<GroupModel.Division>, val context: Context?,
         pts.text = rank.points.toString()
 
         rank.contestantId?.let {
-            Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).into(ivMiniFlag)
-            Picasso.get().load(ModelUtils.getImageUrl(UrlPrefix.flag, it)).into(ivFlag)
+            Picasso.get().load(ModelUtils.getImageUrl(UrlType.Flag, it)).into(ivMiniFlag)
+            Picasso.get().load(ModelUtils.getImageUrl(UrlType.Flag, it)).into(ivFlag)
         }
 
         ivMiniFlag.setOnClickListener { onTeamFlagClickListener.onTeamFlagClicked(rank.contestantId) }
