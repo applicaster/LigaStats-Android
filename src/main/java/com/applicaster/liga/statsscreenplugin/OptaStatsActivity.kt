@@ -2,6 +2,7 @@ package com.applicaster.liga.statsscreenplugin
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.support.annotation.NonNull
 import android.support.v4.app.Fragment
@@ -62,6 +63,7 @@ class OptaStatsActivity : AppCompatActivity() {
                 .into(iv_back)
         Picasso.get().load(PluginDataRepository.INSTANCE.getLogoUrl())
                 .into(iv_logo)
+        toolbar.setBackgroundColor(PluginDataRepository.INSTANCE.getActionBarColor())
 
         iv_back.setOnClickListener {
             onBackPressed()

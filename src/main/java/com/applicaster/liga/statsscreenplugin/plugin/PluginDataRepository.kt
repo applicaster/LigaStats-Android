@@ -1,7 +1,9 @@
 package com.applicaster.liga.statsscreenplugin.plugin
 
+import android.graphics.Color
 import com.applicaster.liga.statsscreenplugin.utils.Constants.DEFAULT_BACK_BUTTON_URL
 import com.applicaster.liga.statsscreenplugin.utils.Constants.DEFAULT_LOGO_URL
+import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_ACTIONBAR_COLOR
 import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_APP_ID
 import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_BACK_BUTTON_URL
 import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_CALENDAR_ID
@@ -137,5 +139,13 @@ enum class PluginDataRepository : PluginRepository {
 
     override fun setPartidosImageBaseUrl(url: String) {
         PreferenceUtil.getInstance().setStringPref(PARAM_PARTIDOS_IMAGE_BASE_URL, url)
+    }
+
+    override fun getActionBarColor(): Int {
+        return PreferenceUtil.getInstance().getIntPref(PARAM_ACTIONBAR_COLOR, Color.parseColor("#259034"))
+    }
+
+    override fun setActionBarColor(color: String?) {
+        color?.let { PreferenceUtil.getInstance().setIntPref(PARAM_ACTIONBAR_COLOR, Color.parseColor(it)) }
     }
 }
