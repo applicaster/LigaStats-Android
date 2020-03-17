@@ -8,6 +8,7 @@ import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_APP_ID
 import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_BACK_BUTTON_URL
 import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_CALENDAR_ID
 import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_COMPETITION_ID
+import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_ENABLE_PLAYER_SCREEN
 import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_FLAG_IMAGE_BASE_URL
 import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_LOGO_URL
 import com.applicaster.liga.statsscreenplugin.utils.Constants.PARAM_NUMBER_OF_MATCHES
@@ -147,5 +148,13 @@ enum class PluginDataRepository : PluginRepository {
 
     override fun setActionBarColor(color: String?) {
         color?.let { PreferenceUtil.getInstance().setIntPref(PARAM_ACTIONBAR_COLOR, Color.parseColor(it)) }
+    }
+
+    override fun enablePlayerScreen(enabled: Boolean) {
+        PreferenceUtil.getInstance().setBooleanPref(PARAM_ENABLE_PLAYER_SCREEN, enabled)
+    }
+
+    override fun isPlayerScreenEnabled(): Boolean {
+        return PreferenceUtil.getInstance().getBooleanPref(PARAM_ENABLE_PLAYER_SCREEN, false)
     }
 }

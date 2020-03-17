@@ -61,4 +61,8 @@ interface PluginRepository {
     fun getActionBarColor(): Int
 
     fun setActionBarColor(color: String?)
+
+    fun enablePlayerScreen(enabled: Boolean)
+
+    fun isPlayerScreenEnabled(): Boolean
 }

@@ -20,6 +20,7 @@ object Constants {
     const val PARAM_LOGO_URL = "logo_url"
     const val PARAM_BACK_BUTTON_URL = "back_button_url"
     const val PARAM_APP_ID = "param_app_id"
+    const val PARAM_ENABLE_PLAYER_SCREEN = "enable_player_screen"
 
     // stats keys of opta
     const val FORMATION_USED = "formationUsed"

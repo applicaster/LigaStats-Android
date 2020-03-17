@@ -5,10 +5,14 @@ import com.applicaster.app.CustomApplication
 import com.applicaster.liga.statsscreenplugin.PluginConfigurationHandler
 import android.content.Context.CONNECTIVITY_SERVICE
 import android.net.ConnectivityManager
+import android.util.Log
+import com.applicaster.liga.statsscreenplugin.plugin.PluginDataRepository
 
 
 class PluginUtils {
     companion object {
+        const val TAG = "PluginUtils"
+
         var configurationHandler: PluginConfigurationHandler = PluginConfigurationHandler()
         fun goToMatchDetailsScreen(matchId: String) {
             val data: MutableMap<String, String> =
@@ -29,12 +33,16 @@ class PluginUtils {
         }
 
         fun goToPlayerScreen(playerId: String) {
-            val data: MutableMap<String, String> =
-                    hashMapOf("type" to "general",
-                            "action" to "stats_open_screen",
-                            "screen_id" to "player_screen",
-                            "player_id" to playerId)
-            configurationHandler.handlePluginScheme(CustomApplication.getAppContext(), data)
+            if (PluginDataRepository.INSTANCE.isPlayerScreenEnabled()) {
+                Log.d(TAG, "Navigation to Player screen has blocked in the configuration.")
+            } else {
+                val data: MutableMap<String, String> =
+                        hashMapOf("type" to "general",
+                                "action" to "stats_open_screen",
+                                "screen_id" to "player_screen",
+                                "player_id" to playerId)
+                configurationHandler.handlePluginScheme(CustomApplication.getAppContext(), data)
+            }
         }
 
         fun isNetworkConnected(context: Context): Boolean {

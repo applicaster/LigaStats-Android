@@ -104,9 +104,16 @@
       },
       {
         "key": "actionbar_color",
+        "type": "color_picker",
         "label": "Color of the actionbar background",
-        "tooltip_text": "Color of the actionbar background",
-        "default": "#ff1e1e1e"
+        "initial_value": "#ff1e1e1e"
+      },
+      {
+        "key": "enable_player_screen",
+        "label": "Players Screen ON",
+        "label_tooltip": "Switcher to turn ON/OFF an ability to navigate to the Player Screen",
+        "type": "switch",
+        "initial_value": true
       }
     ]
   }
