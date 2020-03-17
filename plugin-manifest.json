@@ -7,7 +7,7 @@
   "platform": "android",
   "author_name": "Dmytro Puzak",
   "author_email": "dmytro.puzak@corewillsoft.com",
-  "manifest_version": "0.0.4",
+  "manifest_version": "0.0.6",
   "name": "Stats Screens League Format",
   "description": "Screens to show statistics of an Liga client",
   "type": "general",
@@ -20,7 +20,7 @@
   ],
   "min_zapp_sdk": "7.4.0",
   "dependency_name": "com.applicaster:LigaStats-Android",
-  "dependency_version": "0.0.7",
+  "dependency_version": "0.0.9",
   "deprecated_since_zapp_sdk": "",
   "unsupported_since_zapp_sdk": "",
   "react_native": false,
@@ -101,6 +101,19 @@
         "placeholder": "",
         "label_tooltip": "Change how many matches we show in the carrousel",
         "type": "text_input"
+      },
+      {
+        "key": "actionbar_color",
+        "type": "color_picker",
+        "label": "Color of the actionbar background",
+        "initial_value": "#ff1e1e1e"
+      },
+      {
+        "key": "enable_player_screen",
+        "label": "Players Screen ON",
+        "label_tooltip": "Switcher to turn ON/OFF an ability to navigate to the Player Screen",
+        "type": "switch",
+        "initial_value": true
       }
     ]
   }

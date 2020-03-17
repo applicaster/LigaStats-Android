@@ -93,6 +93,8 @@ class OptaStatsContract : PluginScreen, PluginSchemeI, GenericPluginI {
             PluginDataRepository.INSTANCE.setReferer(params[Constants.PARAM_REFERER].toString())
             PluginDataRepository.INSTANCE.setNumberOfMatches(params[Constants.PARAM_NUMBER_OF_MATCHES].toString())
             PluginDataRepository.INSTANCE.setShowTeam(params[Constants.PARAM_SHOW_TEAM])
+            PluginDataRepository.INSTANCE.setActionBarColor(params[Constants.PARAM_ACTIONBAR_COLOR]?.toString())
+            PluginDataRepository.INSTANCE.enablePlayerScreen(params[Constants.PARAM_ENABLE_PLAYER_SCREEN].toString().toBoolean())
             return true
         }
 

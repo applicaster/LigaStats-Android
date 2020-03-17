@@ -57,4 +57,12 @@ interface PluginRepository {
     fun getPartidosImageBaseUrl(): String
 
     fun setPartidosImageBaseUrl(url: String)
+
+    fun getActionBarColor(): Int
+
+    fun setActionBarColor(color: String?)
+
+    fun enablePlayerScreen(enabled: Boolean)
+
+    fun isPlayerScreenEnabled(): Boolean
 }

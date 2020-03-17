@@ -10,6 +10,7 @@ object Constants {
     const val PARAM_PERSON_IMAGE_BASE_URL = "person_image_base_url"
     const val PARAM_SHIRT_IMAGE_BASE_URL = "shirt_image_base_url"
     const val PARAM_PARTIDOS_IMAGE_BASE_URL = "partidos_image_base_url"
+    const val PARAM_ACTIONBAR_COLOR = "actionbar_color"
     const val PARAM_TOKEN = "token"
     const val PARAM_REFERER = "referer"
     const val PARAM_COMPETITION_ID = "competition_id"
@@ -19,6 +20,7 @@ object Constants {
     const val PARAM_LOGO_URL = "logo_url"
     const val PARAM_BACK_BUTTON_URL = "back_button_url"
     const val PARAM_APP_ID = "param_app_id"
+    const val PARAM_ENABLE_PLAYER_SCREEN = "enable_player_screen"
 
     // stats keys of opta
     const val FORMATION_USED = "formationUsed"
