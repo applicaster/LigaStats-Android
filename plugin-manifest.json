@@ -103,12 +103,6 @@
         "type": "text_input"
       },
       {
-        "key": "actionbar_color",
-        "type": "color_picker",
-        "label": "Color of the actionbar background",
-        "initial_value": "#ff1e1e1e"
-      },
-      {
         "key": "enable_player_screen",
         "label": "Players Screen ON",
         "label_tooltip": "Switcher to turn ON/OFF an ability to navigate to the Player Screen",

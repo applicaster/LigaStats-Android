@@ -21,5 +21,5 @@
     <color name="indicator_green">#259034</color>
     <color name="indicator_yellow">#ffab00</color>
     <color name="indicator_red">#b50017</color>
-    <color name="bg_toolbar">@color/black</color>
+    <color name="bg_toolbar">@color/top_bar_background</color>
 </resources>

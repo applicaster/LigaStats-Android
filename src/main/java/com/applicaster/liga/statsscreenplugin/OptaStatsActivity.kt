@@ -2,16 +2,17 @@ package com.applicaster.liga.statsscreenplugin
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.support.annotation.NonNull
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import com.applicaster.liga.statsscreenplugin.plugin.PluginDataRepository
 import com.applicaster.liga.statsscreenplugin.screens.allmatches.AllMatchesFragment
 import com.applicaster.liga.statsscreenplugin.screens.career.PlayerCareerFragment
 import com.applicaster.liga.statsscreenplugin.screens.matchdetails.MatchDetailsFragment
 import com.applicaster.liga.statsscreenplugin.screens.team.TeamFragment
+import com.applicaster.util.OSUtil
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_liga_america_stats.*
 
@@ -63,7 +64,11 @@ class OptaStatsActivity : AppCompatActivity() {
                 .into(iv_back)
         Picasso.get().load(PluginDataRepository.INSTANCE.getLogoUrl())
                 .into(iv_logo)
-        toolbar.setBackgroundColor(PluginDataRepository.INSTANCE.getActionBarColor())
+
+        OSUtil.getColorResourceIdentifier("top_bar_background")
+                .let { if (it == 0) R.color.black else it }
+                .let { ContextCompat.getColor(applicationContext, it) }
+                .let { toolbar.setBackgroundColor(it) }
 
         iv_back.setOnClickListener {
             onBackPressed()
@@ -77,7 +82,7 @@ class OptaStatsActivity : AppCompatActivity() {
                                 .newInstance(intent.extras[TEAM_ID].toString()), false)
                         return
                     }
-                    
+
                     addFragment(R.id.fragment_container, AllMatchesFragment(), false)
                 }
                 Screen.MATCH_DETAILS -> {
