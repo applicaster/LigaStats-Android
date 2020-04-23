@@ -16,7 +16,6 @@ import com.applicaster.liga.statsscreenplugin.R
 import com.applicaster.liga.statsscreenplugin.data.model.GroupModel
 import com.applicaster.liga.statsscreenplugin.utils.ModelUtils
 import com.applicaster.liga.statsscreenplugin.utils.UrlType
-import com.google.obf.r
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.liga_item_team_card.view.*
 
