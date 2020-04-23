@@ -51,4 +51,6 @@
     <string name="played">Played</string>
     <string name="unknown">Unknown</string>
     <string name="jornada">matchweek</string>
+
+    <string name="matches_list_header_title">pos. equipo</string>
 </resources>

@@ -121,7 +121,7 @@ class ModelUtils {
 
                 return dateFormatter.format(value)
             } catch (e: ParseException) {
-                Log.e(ModelUtils::class.java.simpleName, "Make sure the date format is \"yyyy-MM-dd'Z'HH:mm:ss'Z'\"")
+                Log.e(ModelUtils::class.java.simpleName, "Make sure the date format is \"yyyy-MM-dd'Z'HH:mm:ss'Z'\" Actual :: $dateString")
             }
 
             return ""
