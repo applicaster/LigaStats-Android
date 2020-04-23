@@ -34,14 +34,14 @@ class PluginUtils {
 
         fun goToPlayerScreen(playerId: String) {
             if (PluginDataRepository.INSTANCE.isPlayerScreenEnabled()) {
-                Log.d(TAG, "Navigation to Player screen has blocked in the configuration.")
-            } else {
                 val data: MutableMap<String, String> =
                         hashMapOf("type" to "general",
                                 "action" to "stats_open_screen",
                                 "screen_id" to "player_screen",
                                 "player_id" to playerId)
                 configurationHandler.handlePluginScheme(CustomApplication.getAppContext(), data)
+            } else {
+                Log.d(TAG, "Navigation to Player screen has blocked in the configuration.")
             }
         }
 

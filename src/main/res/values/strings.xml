@@ -18,7 +18,7 @@
     <string name="lost_title">L</string>
     <string name="win_title">W</string>
     <string name="games_played">P</string>
-    <string name="parameters_are_not_configured">Parameters are not configured. Please, contact Applicaster for support</string>
+    <string name="parameters_are_not_configured">Data is not available at this moment. Please, try later.</string>
     <string name="team_title">TEAM</string>
     <string name="avg_per_match_title">AVERAGE PER MATCH</string>
     <string name="goals_title">GOALS</string>
@@ -51,4 +51,6 @@
     <string name="played">Played</string>
     <string name="unknown">Unknown</string>
     <string name="jornada">matchweek</string>
+
+    <string name="matches_list_header_title">pos. equipo</string>
 </resources>

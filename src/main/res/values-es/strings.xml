@@ -18,7 +18,7 @@
     <string name="lost_title">P</string>
     <string name="win_title">G</string>
     <string name="games_played">J</string>
-    <string name="parameters_are_not_configured">Los parámetros no están configurados. Por favor, póngase en contacto con Applicaster para soporte</string>
+    <string name="parameters_are_not_configured">La información no está disponible en este momento. Por favor intente más tarde.</string>
     <string name="team_title">EQUIPO</string>
     <string name="avg_per_match_title">PROMEDIO POR PARTIDO</string>
     <string name="goals_title">GOLES</string>

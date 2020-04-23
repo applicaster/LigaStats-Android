@@ -5,9 +5,8 @@ import android.os.Build
 import android.support.annotation.RequiresApi
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
-import android.transition.Transition
-import android.transition.TransitionInflater
-import android.transition.TransitionManager
+import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +20,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.liga_item_team_card.view.*
 
 class TeamAdapter(private val items: List<GroupModel.Ranking>, val context: Context?, listener: OnTeamFlagClickListener)
-    : RecyclerView.Adapter<TeamViewHolder>() {
+    : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var onTeamFlagClickListener: OnTeamFlagClickListener = listener
 
@@ -33,28 +32,25 @@ class TeamAdapter(private val items: List<GroupModel.Ranking>, val context: Cont
         fun onTeamFlagClicked(teamId: String)
     }
 
-    private var expandCollapseTransition: Transition? = null
     private var recyclerView: RecyclerView? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
-        return TeamViewHolder(LayoutInflater.from(context).inflate(R.layout.liga_item_team_card, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            0 -> HeaderViewHolder(LayoutInflater.from(context).inflate(R.layout.liga_item_team_header_card, parent, false))
+            else -> TeamViewHolder(LayoutInflater.from(context).inflate(R.layout.liga_item_team_card, parent, false))
+        }
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
+    override fun getItemCount(): Int = items.size + 1
 
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
+    override fun getItemId(position: Int): Long = position.toLong()
+
+    override fun getItemViewType(position: Int): Int = position
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
         this.recyclerView = recyclerView
-        expandCollapseTransition = TransitionInflater.from(recyclerView.context)
-                .inflateTransition(R.transition.card_expand_toggle)
-                .apply { duration = 300 }
     }
 
     private fun fillProfile(rank: GroupModel.Ranking, team: TextView, ivFlag: ImageView,
@@ -72,48 +68,22 @@ class TeamAdapter(private val items: List<GroupModel.Ranking>, val context: Cont
         ivFlag.setOnClickListener { onTeamFlagClickListener.onTeamFlagClicked(rank.contestantId) }
     }
 
+    override fun onBindViewHolder(holderGroup: RecyclerView.ViewHolder, position: Int) {
+        if (position != 0 && holderGroup is TeamViewHolder) {
+            val dataPosition = position - 1
+            holderGroup.tvOrderNumber.text = (position).toString()
+            val rank = items[dataPosition]
+            fillProfile(rank,
+                    holderGroup.tvTeamName,
+                    holderGroup.ivFlag,
+                    holderGroup.tvPoints1,
+                    holderGroup.tvPoints2,
+                    holderGroup.tvPoints3,
+                    holderGroup.tvPoints4,
+                    holderGroup.tvPoints5)
 
-    override fun onBindViewHolder(holderGroup: TeamViewHolder, position: Int) {
-        holderGroup.tvOrderNumber.text = (position + 1).toString()
-        val rank = items[position]
-        fillProfile(rank,
-                holderGroup.tvTeamName,
-                holderGroup.ivFlag,
-                holderGroup.tvPoints1,
-                holderGroup.tvPoints2,
-                holderGroup.tvPoints3,
-                holderGroup.tvPoints4,
-                holderGroup.tvPoints5)
-
-        val indicatorColor = getIndicatorColor(position)
-        holderGroup.ivIndicator.setBackgroundColor(indicatorColor)
-        holderGroup.ivArrow.setOnClickListener {
-            // only for devices with Android 5.0 and above
-            // come on! if you have a device with KitKat facebook will not work
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                toggleView(holderGroup)
-            }
-        }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.KITKAT)
-    private fun toggleView(holderGroup: TeamViewHolder) {
-        if (holderGroup.rlSecondContainer.visibility == View.GONE) {
-            holderGroup.ivArrow.animate().rotation(180f).start()
-
-            recyclerView?.let {
-                TransitionManager.beginDelayedTransition(it, expandCollapseTransition)
-            }
-            holderGroup.rlSecondContainer.visibility = View.VISIBLE
-            holderGroup.vDivider.visibility = View.VISIBLE
-        } else {
-            holderGroup.ivArrow.animate().rotation(0f).start()
-
-            recyclerView?.let {
-                TransitionManager.beginDelayedTransition(it, expandCollapseTransition)
-            }
-            holderGroup.rlSecondContainer.visibility = View.GONE
-            holderGroup.vDivider.visibility = View.GONE
+            val indicatorColor = getIndicatorColor(dataPosition)
+            holderGroup.ivIndicator.setBackgroundColor(indicatorColor)
         }
     }
 
@@ -132,8 +102,7 @@ class TeamAdapter(private val items: List<GroupModel.Ranking>, val context: Cont
 class TeamViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     var ivFlag = view.iv_flag
     var tvTeamName = view.tv_team_name
-    var ivArrow = view.iv_arrow
-    var vDivider = view.vDivider
+
     var ivIndicator = view.iv_indicator
     var tvOrderNumber = view.tv_order_number
 
@@ -142,8 +111,6 @@ class TeamViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     var tvPoints3 = view.tv_points_3
     var tvPoints4 = view.tv_points_4
     var tvPoints5 = view.tv_points_5
-
-    var cvContainer = view.cv_card
-    var rlSecondContainer = view.rl_second_container
-
 }
+
+class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view)
