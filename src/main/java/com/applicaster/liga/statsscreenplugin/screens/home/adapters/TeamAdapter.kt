@@ -56,7 +56,7 @@ class TeamAdapter(private val items: List<GroupModel.Ranking>, val context: Cont
     private fun fillProfile(rank: GroupModel.Ranking, team: TextView, ivFlag: ImageView,
                             played: TextView, won: TextView, drawn: TextView, lost: TextView,
                             pts: TextView) {
-        team.text = rank.contestantName
+        team.text = rank.contestantShortName
         played.text = rank.matchesPlayed.toString()
         won.text = rank.matchesWon.toString()
         drawn.text = rank.matchesDrawn.toString()
